@@ -35,6 +35,7 @@ export default function Home() {
         }, 3000); // Delay of 3 seconds
 
         return () => clearTimeout(timer); // Cleanup timeout on component unmount
+        // Loading for low latancy computers or bad internet connection
     }, []);
 
     return (
@@ -74,8 +75,8 @@ export default function Home() {
                         {/* Status Text */}
                         <p className="font-bold text-white">Status</p>
                         {/* Status Indicator */}
-                        <div className={`w-4 h-4 rounded-full mr-10 ml-4 ${pageSelector !== 1 ? "bg-green-400" : "bg-yellow-400"}`}>
-                            <div className={`rounded-full w-4 h-4 animate-pulse ${pageSelector !== 1 ? "bg-green-600" : "bg-yellow-600"}`} />
+                        <div className={`w-4 h-4 rounded-full mr-10 ml-4 ${pageSelector !== 0 ? "bg-green-400" : "bg-yellow-400"}`}>
+                            <div className={`rounded-full w-4 h-4 animate-pulse-background ${pageSelector !== 0 ? "bg-green-600" : "bg-yellow-600"}`} />
                         </div>
                     </div>
                 </div>
