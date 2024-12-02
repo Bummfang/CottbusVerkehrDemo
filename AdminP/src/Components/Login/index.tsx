@@ -13,7 +13,7 @@ const Login = (props: {
 
           <form className="space-y-6" onSubmit={props.login}>
             {/* Form container with a 6-unit space between form elements */}
-            
+
             {/* Username input field */}
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">Benutzername*</label>
@@ -51,19 +51,19 @@ const Login = (props: {
 
             {/* Button row: login button and registration button */}
             <div className="flex flex-row gab-5 justify-center items-center gap-5">
-              <button
-                type="submit"
-                className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#c93636] text-white font-semibold rounded-md hover:bg-[#a32a2a] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
-              >
-                Anmeldung
-              </button>
-
               {/* Button to navigate to the Registration page */}
               <div onClick={props.toRegistration}
                 className="py-2 mt-10 min-w-[10rem] flex justify-center item-center duration-200 px-4 bg-[#265d91] text-white font-semibold rounded-md hover:bg-[#3bbe76] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
               >
                 Registration
               </div>
+
+              <button
+                type="submit"
+                className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#c93636] text-white font-semibold rounded-md hover:bg-[#a32a2a] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
+              >
+                Anmeldung
+              </button>
             </div>
 
           </form>
