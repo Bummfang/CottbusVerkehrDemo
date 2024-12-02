@@ -70,7 +70,7 @@ const Login = (props: {
         </div>
 
         {/* Informational text below the form */}
-        <p className="mt-[10%] text-[1.2rem] font-semibold p-1 text-center">Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p>
+        <p className="mt-10 text-[1.2rem] font-semibold p-1 text-center">Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p>
         <p className="mt-2 text-[0.8rem] font-semibold p-1 text-center">Hinweis: Bitte melden Sie sich nur mit entsprechender Berechtigung an. Fehlerhafte Anmeldeversuche werden aus Sicherheitsgründen protokolliert.</p>
       </div>
     </>
