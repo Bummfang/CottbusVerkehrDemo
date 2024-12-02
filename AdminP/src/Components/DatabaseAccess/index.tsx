@@ -85,10 +85,10 @@ const DatabaseAccess = () =>{
                     </div>
                     {/* Buttons */}
                     <div className="flex justify-end space-x-4">
-                    <button className="bg-[#c93636] font-semibold text-white px-6 py-2 rounded-md hover:bg-gray-600">
+                    <button className="bg-[#c93636] font-semibold text-white px-6 py-2 rounded-md hover:bg-[#a12d2d] duration-300">
                             Abbrechen
                         </button>
-                        <button className="bg-[#3bbe76] font-semibold text-white px-6 py-2 duration-75 rounded-md hover:bg-[#a12c2c]">
+                        <button className="bg-[#3bbe76] font-semibold text-white px-6 py-2 duration-300 rounded-md hover:bg-[#309c61] ">
                             Speichern
                         </button>
                     </div>
