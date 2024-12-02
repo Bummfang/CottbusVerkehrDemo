@@ -66,11 +66,11 @@ const Registration = (props: {
               {/* Button section for form actions */}
               <div className="flex flex-row gab-5 justify-between items-center gap-5">
                 {/* Back to login button */}
-                <button onClick={props.backToLogin}
+                <div onClick={props.backToLogin}
                   className="py-2 mt-10 duration-200 px-4 text-white bg-[#3bbe76] min-w-[10rem] border-black font-semibold rounded-md hover:bg-[#309c61] hover:border-none focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
                 >
                   Zurück
-                </button>
+                </div>
   
                 {/* Submit registration button */}
                 <button

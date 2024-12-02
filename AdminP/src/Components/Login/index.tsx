@@ -59,19 +59,19 @@ const Login = (props: {
               </button>
 
               {/* Button to navigate to the Registration page */}
-              <button onClick={props.toRegistration}
-                className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#265d91] text-white font-semibold rounded-md hover:bg-[#3bbe76] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
+              <div onClick={props.toRegistration}
+                className="py-2 mt-10 min-w-[10rem] flex justify-center item-center duration-200 px-4 bg-[#265d91] text-white font-semibold rounded-md hover:bg-[#3bbe76] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
               >
                 Registration
-              </button>
+              </div>
             </div>
 
           </form>
         </div>
 
         {/* Informational text below the form */}
-        <p className="mt-[10%] text-[1.2rem] font-semibold">Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p>
-        <p className="mt-2 text-[0.8rem] font-semibold">Hinweis: Bitte melden Sie sich nur mit entsprechender Berechtigung an. Fehlerhafte Anmeldeversuche werden aus Sicherheitsgründen protokolliert.</p>
+        <p className="mt-[10%] text-[1.2rem] font-semibold p-1 text-center">Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p>
+        <p className="mt-2 text-[0.8rem] font-semibold p-1 text-center">Hinweis: Bitte melden Sie sich nur mit entsprechender Berechtigung an. Fehlerhafte Anmeldeversuche werden aus Sicherheitsgründen protokolliert.</p>
       </div>
     </>
   );

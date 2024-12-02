@@ -38,6 +38,11 @@ export default function Home() {
         // Loading for low latancy computers or bad internet connection
     }, []);
 
+
+
+
+
+
     return (
         <div className="w-full h-screen flex flex-col relative">
             {/* Red Cover with Loading Animation */}
@@ -61,11 +66,20 @@ export default function Home() {
                     </div>
                 </div>
 
+
+
                 {/* Render the current page */}
                 <div className="w-full h-full bg-slate-100">
                     {renderPage()}
                 </div>
+
             </div>
+
+
+
+
+
+
 
             {/* Footer Section */}
             <div className="w-full bg-slate-100 select-none">
@@ -75,8 +89,8 @@ export default function Home() {
                         {/* Status Text */}
                         <p className="font-bold text-white">Status</p>
                         {/* Status Indicator */}
-                        <div className={`w-4 h-4 rounded-full mr-10 ml-4 ${pageSelector !== 0 ? "bg-green-400" : "bg-yellow-400"}`}>
-                            <div className={`rounded-full w-4 h-4 animate-pulse-background ${pageSelector !== 0 ? "bg-green-600" : "bg-yellow-600"}`} />
+                        <div className={`w-4 h-4 rounded-full mr-10 ml-4 duration-300 ${pageSelector !== 0 ? "bg-green-400" : "bg-yellow-400"}`}>
+                            <div className={`rounded-full w-4 h-4 animate-pulse-background duration-300 ${pageSelector !== 0 ? "bg-green-600" : "bg-yellow-600"}`} />
                         </div>
                     </div>
                 </div>
