@@ -9,6 +9,7 @@ export default {
       animation: {
         'pulse-background': 'pulseBackground 1.5s infinite', // Animation für den Hintergrundkreis
         'fadeInAnimation': 'fadeIn 1s ease-out',
+        'spin-slow': 'spin 1s linear infinite',
       },
       keyframes: {
         pulseBackground: {
