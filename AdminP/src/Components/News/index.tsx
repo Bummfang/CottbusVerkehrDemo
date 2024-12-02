@@ -17,9 +17,9 @@ const NewsPage = () => {
                 </div>
         </div>
      {/* Main Content */}
-     <div className="w-full h-full border-2 
+     <div className="w-full h-full
      grid grid-cols-3 grid-rows-2 place-items-center place-content-center
-     gap-y-[20%] mt-[10%]">
+     gap-y-[20%] my-[10%]">
      
    <FlipCard/>
    <FlipCard/>
