@@ -32,7 +32,7 @@ const Login = (props: {
               <input
                 id="password"
                 type="password"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
+                className="mt-1 block w-full px-4 py-2 border  border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
                 placeholder="Passwort eingeben"
                 required
               />
