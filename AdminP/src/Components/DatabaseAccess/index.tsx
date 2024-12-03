@@ -1,4 +1,11 @@
-const DatabaseAccess = () =>{
+const DatabaseAccess = (props:{
+    backToMainMenu:() => void;
+}) =>{
+
+
+    
+
+
     return(
         <div className=" bg-gray-100 h-[90%] p-8 flex justify-center">
                 <div className="w-[90%] duration-700 bg-white p-6 rounded-lg shadow-lg">
@@ -12,7 +19,6 @@ const DatabaseAccess = () =>{
                                     id="option1"
                                     name="databaseOption"
                                     value="option1"
-
                                     className="mr-2"
                                 />
                                 <label htmlFor="option1">Datenbank sichern</label>
@@ -85,12 +91,12 @@ const DatabaseAccess = () =>{
                     </div>
                     {/* Buttons */}
                     <div className="flex justify-end space-x-4">
-                    <button className="bg-[#c93636] font-semibold text-white px-6 py-2 rounded-md hover:bg-[#a12d2d] duration-300">
+                    <div  className="bg-[#c93636] font-semibold text-white px-6 py-2 rounded-md hover:bg-[#a12d2d] duration-300" onClick={props.backToMainMenu}>
                             Abbrechen
-                        </button>
-                        <button className="bg-[#3bbe76] font-semibold text-white px-6 py-2 duration-300 rounded-md hover:bg-[#309c61] ">
+                        </div>
+                        <div className="bg-[#3bbe76] font-semibold text-white px-6 py-2 duration-300 rounded-md hover:bg-[#309c61] ">
                             Speichern
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>

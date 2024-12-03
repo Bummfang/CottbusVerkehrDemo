@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"; // Importing React's useState and u
 import Login from "../Login"; // Importing the Login component
 import DatabaseAccess from "../DatabaseAccess"; // Importing the DatabaseAccess component
 import Registration from "../Registration"; // Importing the Registration component
+import MainMenu from "../MainMenu";
+import Settings from "../Settings";
 
 export default function Home() {
     // pageSelector is a state variable to track which page to render.
@@ -10,9 +12,11 @@ export default function Home() {
     const [loading, setLoading] = useState(true);
 
     // Components to render based on pageSelector
-    const loginComponent = <Login toRegistration={() => setPageSelector(1)} login={() => setPageSelector(2)} />;
-    const databaseAccess = <DatabaseAccess />;
+    const loginComponent = <Login toRegistration={() => setPageSelector(1)} login={() => setPageSelector(3)} />;
+    const databaseAccess = <DatabaseAccess backToMainMenu={() => setPageSelector(3)} />;
     const registrationComponent = <Registration backToLogin={() => setPageSelector(0)} />;
+    const mainMenu = <MainMenu toLogin={()=>setPageSelector(0)} toDatabaseAccess={() => setPageSelector(2)} toOptions={() => setPageSelector(4)}></MainMenu>
+    const settings = <Settings backToMainMenu={() => setPageSelector(3)}></Settings>
 
     // Function to render the correct page based on pageSelector
     const renderPage = () => {
@@ -23,6 +27,10 @@ export default function Home() {
                 return registrationComponent;
             case 2: // If pageSelector is 2, render DatabaseAccess
                 return databaseAccess;
+            case 3: 
+                return mainMenu;
+            case 4:
+                return settings;
             default: // Default case, render Login
                 return loginComponent;
         }

@@ -1,8 +1,57 @@
-const Registration = (props: { 
-    backToLogin: () => void; // Function to navigate back to the login page.
-  }) => {
+import axios from "axios";
+import { useState } from "react";
+
+const Registration = (props: { backToLogin: () => void }) => {
+
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+
+    const { username, email, password, confirmPassword } = formData;
+
+    if (password !== confirmPassword) {
+      setError('Passwörter stimmen nicht überein.');
+      return;
+    }
+
+    try {
+      await axios.post('/api/register', {
+        username,
+        passwort: password,
+        email,
+      });
+
+      setSuccess('Registrierung erfolgreich!');
+      setFormData({
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      });
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Ein Fehler ist aufgetreten.');
+    }
+  };
+    
   
     return (
+      
       <>
         {/* Main container for centering the form */}
         <div className="w-full h-full flex select-none flex-col items-center justify-center animate-fadeInAnimation">
@@ -14,7 +63,7 @@ const Registration = (props: {
             <h2 className="text-center text-2xl font-bold text-[#265d91] mb-6">Registrierung</h2>
   
             {/* Form element */}
-            <form className="space-y-6" onSubmit={() => console.log('registration')}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Username input field */}
               <div>
                 <label htmlFor="username" className="block text-sm font-medium text-gray-700">Benutzername*</label>
@@ -87,6 +136,8 @@ const Registration = (props: {
           <p className="mt-[10%] text-[1.2rem] font-semibold">Willkommen! Bitte registrieren Sie sich, um fortzufahren.</p>
           <p className="mt-2 text-[0.8rem] font-semibold">Hinweis: Die Registrierung ist nur für berechtigte Benutzer möglich. Stellen Sie sicher, dass Ihre E-Mail-Adresse korrekt ist.</p>
         </div>
+
+        <p>{error}</p>
       </>
     );
   }
