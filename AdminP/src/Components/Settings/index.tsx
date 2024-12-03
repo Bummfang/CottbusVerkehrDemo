@@ -70,7 +70,7 @@ const Settings = (props:{
 
 
     return (
-        <div className="bg-gray-100 p-8 h-full">
+        <div className="bg-gray-100 select-none p-8 h-full">
             <div className="w-full max-w-[600px] mx-auto bg-white p-6 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-semibold text-[#333333] mb-8">Einstellungen</h2>
 

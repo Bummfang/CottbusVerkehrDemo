@@ -4,7 +4,7 @@ const MainMenu = (props:{
     toLogin:() => void;
 }) => {
     return (
-        <div className="w-full bg-slate-100 p-6 pl-10 flex flex-col items-start">
+        <div className="w-full bg-slate-100 p-6 pl-10 select-none flex flex-col items-start">
             <h2 className="text-2xl font-bold text-left text-[#333333] mb-8">Hauptmenü</h2>
 
             {/* Menü-Container */}
