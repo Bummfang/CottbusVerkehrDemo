@@ -23,6 +23,7 @@ useEffect(() => {
 
     return (
         <div className="w-full bg-slate-100 p-6 pl-10 select-none flex flex-col items-start">
+            <div className="ml-10">
             <h2 className="text-2xl font-bold text-left text-[#333333] mb-8">Hauptmenü</h2>
 
             {/* Menü-Container */}
@@ -30,7 +31,7 @@ useEffect(() => {
                 {/* Datenbank Menü */}
                 <div
                     onClick={props.toDatabaseAccess}
-                    className={`relative group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#265d91]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
+                    className={`relative group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#c93636]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
                         showCards[0] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
                     }`}
                 >
@@ -41,7 +42,7 @@ useEffect(() => {
                 {/* Content Management Menü */}
                 <div
                     onClick={props.toDatabaseAccess}
-                    className={`relative group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#265d91]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
+                    className={`relative group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#c93636]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
                         showCards[1] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
                     }`}
                 >
@@ -52,7 +53,7 @@ useEffect(() => {
                 {/* Einstellungen Menü */}
                 <div
                     onClick={props.toOptions}
-                    className={`relative group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#265d91]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
+                    className={`relative group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#c93636]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
                         showCards[2] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
                     }`}
                 >
@@ -63,13 +64,14 @@ useEffect(() => {
                 {/* Ausloggen Menü */}
                 <div
                     onClick={props.toLogin}
-                    className={`relative group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#265d91]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
+                    className={`relative group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#c93636]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
                         showCards[3] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
                     }`}
                 >
                     <h3 className="text-xl font-semibold text-[#333333]  duration-300 group-hover:text-white">Ausloggen</h3>
                     <p className="text-[#555555] group-hover:text-white duration-300" group-hover:text-white duration-300>Melden Sie sich von der Anwendung ab.</p>
                 </div>
+            </div>
             </div>
         </div>
     );
