@@ -24,10 +24,10 @@ useEffect(() => {
     return (
         <div className="w-full bg-slate-100 p-6 pl-10 select-none flex flex-col items-start">
             <div className="ml-10">
-            <h2 className="text-2xl font-bold text-left text-[#333333] mb-8">Hauptmenü</h2>
+            <h2 className="text-3xl font-bold text-left text-[#444444] mb-8">Hauptmenü</h2>
 
             {/* Menü-Container */}
-            <div className="w-full mt-10 max-w-[500px]">
+            <div className="w-full mt-16 max-w-[500px]">
                 {/* Datenbank Menü */}
                 <div
                     onClick={props.toDatabaseAccess}
@@ -35,7 +35,7 @@ useEffect(() => {
                         showCards[0] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
                     }`}
                 >
-                    <h3 className="text-xl font-semibold text-[#333333] duration-300  group-hover:text-white">Datenbank</h3>
+                    <h3 className="text-xl font-semibold text-[#333333] duration-300  group-hover:text-white">Datenbankverwaltung</h3>
                     <p className="text-[#555555] group-hover:text-white duration-300">Verwalten Sie die Datenbankoptionen wie Sichern, Wiederherstellen oder einen neuen Nutzer anlegen.</p>
                 </div>
 

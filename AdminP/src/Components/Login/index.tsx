@@ -53,26 +53,26 @@ const Login = (props: {
             <div className="flex flex-row gab-5 justify-center items-center gap-5">
               {/* Button to navigate to the Registration page */}
               <div onClick={props.toRegistration}
-                className="py-2 mt-10 min-w-[10rem] flex justify-center item-center duration-200 px-4 bg-[#265d91] text-white font-semibold rounded-md hover:bg-[#3bbe76] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
+                className="py-2 mt-10 min-w-[10rem] hover:cursor-pointer flex justify-center item-center duration-200 px-4 bg-[#265d91] text-white font-semibold rounded-md hover:bg-[#356fa5] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
               >
                 Registration
               </div>
 
-              <button
-                type="submit"
-                className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#c93636] text-white font-semibold rounded-md hover:bg-[#a32a2a] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
-              >
-                Anmeldung
-              </button>
-            </div>
-
-          </form>
+            <button
+              type="submit"
+              className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#3bbe76] text-white font-semibold rounded-md hover:bg-[#309c61] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
+            >
+              Anmeldung
+            </button>
         </div>
 
-        {/* Informational text below the form */}
-        <p className="mt-10 text-[1.2rem] font-semibold p-1 text-center">Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p>
+      </form>
+    </div >
+
+      {/* Informational text below the form */ }
+      < p className = "mt-10 text-[1.2rem] font-semibold p-1 text-center" > Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p >
         <p className="mt-2 text-[0.8rem] font-semibold p-1 text-center">Hinweis: Bitte melden Sie sich nur mit entsprechender Berechtigung an. Fehlerhafte Anmeldeversuche werden aus Sicherheitsgründen protokolliert.</p>
-      </div>
+      </div >
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const Settings = (props:{
-    backToMainMenu:() => void;
+const Settings = (props: {
+    backToMainMenu: () => void;
 }) => {
     const [language, setLanguage] = useState("de"); // Standard: Deutsch
     const [darkMode, setDarkMode] = useState(false); // Standard: Dark Mode aus
@@ -71,7 +71,7 @@ const Settings = (props:{
 
     return (
         <div className="bg-gray-100 select-none p-8 h-full">
-            <div className="w-full max-w-[600px] mx-auto bg-white p-6 rounded-lg shadow-lg">
+            <div className="w-full max-w-[600px] mx-auto animate-fadeInAnimation bg-white p-6 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-semibold text-[#333333] mb-8">Einstellungen</h2>
 
 
@@ -99,7 +99,7 @@ const Settings = (props:{
                     <label className="text-lg font-medium text-[#333333]">Dark Mode</label>
                     <label
                         htmlFor="darkModeToggle"
-                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${darkMode ? "bg-blue-500" : "bg-gray-300"}`}
+                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${darkMode ? "bg-[#265d91]" : "bg-gray-300"}`}
                     >
                         <span
                             className={`w-[20px] h-[20px] bg-white rounded-full shadow-md transform ${darkMode && "translate-x-[140%]"} transition-transform duration-300`}
@@ -127,7 +127,7 @@ const Settings = (props:{
                     <label className="text-lg font-medium text-[#333333]">Benachrichtigungen</label>
                     <label
                         htmlFor="notificationsToggle"
-                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${notifications ? "bg-blue-500" : "bg-gray-300"}`}
+                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${notifications ? "bg-[#265d91]" : "bg-gray-300"}`}
                     >
                         <span
                             className={`w-[20px] h-[20px] bg-white rounded-full shadow-md transform ${notifications && "translate-x-[140%]"} transition-transform duration-300`}
@@ -135,7 +135,7 @@ const Settings = (props:{
                         <input
                             id="notificationsToggle"
                             type="checkbox"
-                            className="hidden"
+                            className="hidden" 
                             checked={notifications}
                             onChange={toggleNotifications}
                         />
@@ -154,7 +154,7 @@ const Settings = (props:{
                     <label className="text-lg font-medium text-[#333333]">Automatische Updates</label>
                     <label
                         htmlFor="autoUpdatesToggle"
-                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${autoUpdates ? "bg-blue-500" : "bg-gray-300"}`}
+                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${autoUpdates ? "bg-[#265d91]" : "bg-gray-300"}`}
                     >
                         <span
                             className={`w-[20px] h-[20px] bg-white rounded-full shadow-md transform ${autoUpdates && "translate-x-[140%]"} transition-transform duration-300`}
@@ -214,7 +214,7 @@ const Settings = (props:{
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Neues Passwort eingeben"
-                        className="w-full p-3 border border-gray-300 rounded-md bg-white"
+                        className="w-full p-3 border border-gray-300 rounded-md text-white bg-slate-800"
                     />
                 </div>
 
@@ -231,7 +231,7 @@ const Settings = (props:{
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Passwort wiederholen"
-                        className="w-full p-3 border border-gray-300 rounded-md bg-white"
+                        className="w-full p-3 border border-gray-300 rounded-md text-white bg-slate-800"
                     />
                     {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
                 </div>
@@ -243,18 +243,16 @@ const Settings = (props:{
 
 
                 {/* Speichern-Button */}
-                <div className="flex justify-between">
-                    <div onClick={props.backToMainMenu}
-                        className="bg-[#3bbe76] min-w-[10rem] font-semibold text-white px-3 py-2 rounded-md hover:bg-[#309c61] duration-300"
+                <div className="flex justify-between mt-10">
+                    <div className=" bg-[#265d91] group flex justify-between hover:cursor-pointer hover:bg-[#356fa5]  items-center min-w-[10rem] font-semibold text-white px-6 py-2 rounded-md duration-300" onClick={props.backToMainMenu}
                     >
-                        zurück
+                        <img src="Graphic/arrow.svg" className="w-5 group-hover:-translate-x-3 duration-300" alt="Pfeil Icon für den zurück Knopf" />
+                        <p>zurück</p>
                     </div>
-                    <button
-                        onClick={handleSaveSettings}
-                        className="bg-[#265d91] min-w-[10rem] font-semibold text-white px-6 py-2 rounded-md hover:bg-[#356fa5] duration-300"
-                    >
+                    <div onClick={handleSaveSettings}
+                    className="bg-[#3bbe76] min-w-[10rem] text-center font-semibold text-white px-6 py-2 duration-300 rounded-md hover:bg-[#309c61] ">
                         Speichern
-                    </button>
+                    </div>
                 </div>
             </div>
         </div>

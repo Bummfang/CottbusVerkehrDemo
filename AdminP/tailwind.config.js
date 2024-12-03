@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       animation: {
-        'pulse-background': 'pulseBackground 1.5s infinite', // Animation für den Hintergrundkreis
+        'pulse-background': 'pulseBackground 3s infinite', // Animation für den Hintergrundkreis
         'fadeInAnimation': 'fadeIn 1s ease-out',
         'spin-slow': 'spin 1s linear infinite',
         'slide-in': 'slideIn 0.5s ease-out forwards',
