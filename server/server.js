@@ -16,11 +16,14 @@ const db = new sqlite3.Database('../db/Database.db', (err)=>{
   if(err){
     console.error('Error while connecting database.', err.message);
   }
+  else{
+    console.log('Database connection starting ...');
+  }
 });
 
 
 
-
+// test ping on database
 db.run((err)=>{
   if(err){
     console.log('Error while compiling database')
@@ -28,15 +31,14 @@ db.run((err)=>{
   console.log('Database connection established');
 });
 
+
+
+
+
+
 // Middleware
 app.use(cors());
 app.use(express.json());
-
-
-
-
-
-
 
 
 
