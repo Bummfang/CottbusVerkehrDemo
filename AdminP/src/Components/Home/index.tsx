@@ -115,7 +115,7 @@ export default function Home() {
 
                 }
             }
-            catch (err) {
+            catch {
                 setConnection(false);
             }
         };
@@ -123,7 +123,7 @@ export default function Home() {
         console.log(connection);
         const interval = setInterval(checkConnection, 3000);
         return () => clearInterval(interval);
-    }, []);
+    });
 
 
 
