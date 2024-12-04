@@ -59,7 +59,7 @@ useEffect(() => {
                         showCards[2] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
                     }`}
                 >
-                    <h3 className="text-xl font-semibold text-[#333333] duration-300  group-hover:text-white">Einstellungen</h3>
+                    <h3 className="text-xl font-semibold text-[#333333] duration-300 group-hover:text-white">Einstellungen</h3>
                     <p className="text-[#555555] group-hover:text-white duration-300">Passen Sie die allgemeinen Einstellungen der Anwendung an.</p>
                 </div>
 

@@ -109,7 +109,6 @@ export default function Home() {
             try {
                 const response = await axios.get('http://localhost:3000/api/connection');
                 if (response.status === 200) {
-                    console.log("Connection is successful");
                     setConnection(true);
 
 
@@ -120,7 +119,6 @@ export default function Home() {
             }
         };
         checkConnection();
-        console.log(connection);
         const interval = setInterval(checkConnection, 3000);
         return () => clearInterval(interval);
     });
