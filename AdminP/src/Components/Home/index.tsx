@@ -160,7 +160,7 @@ export default function Home() {
             )}
 
             {/* Main Content Section */}
-            <div className={`w-full h-full bg-slate-100 ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity fixed top-0 duration-500`}>
+            <div className={`w-full h-full relative bg-slate-100 ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity fixed top-0 duration-500`}>
                 <div className="w-full bg-slate-100">
                     <div className="w-full h-[8rem] bg-[#c93636] select-none flex items-center justify-between rounded-b-2xl border-b-2 border-slate-100">
                         {/* Title */}
