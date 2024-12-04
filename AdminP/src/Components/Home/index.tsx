@@ -38,6 +38,8 @@ export default function Home() {
         }
     };
 
+
+    
     // Simulate loading (show the cover for 3 seconds, then slide out)
     useEffect(() => {
         const timer = setTimeout(() => {

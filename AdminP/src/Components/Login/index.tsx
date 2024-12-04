@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 
 const Login = (props: {
   login: () => void;
@@ -26,12 +26,12 @@ const Login = (props: {
       setBackendMessage(response.data.message);
       const timer = setTimeout(() => {
         props.login();
-    }, 3000); 
+    }, 1000); 
     return () => clearTimeout(timer);
     }
     catch (err) {
-      console.error("Fehler bein Senden:",err);
-      setBackendMessage("Fehler bein Senden:");
+      console.error("Nutzer nicht erkannt",err);
+      setBackendMessage("Nutzer nicht erkannt");
     }
   };
 
