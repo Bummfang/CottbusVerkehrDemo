@@ -7,7 +7,7 @@ const MainMenu = (props: {
     toLogin: () => void;
 }) => {
 // Zustand, um zu verfolgen, wann jede Karte sichtbar wird
-const [showCards, setShowCards] = useState([false, false, false, false]);
+const [showCards, setShowCards] = useState<boolean[]>([false, false, false, false]);
 
 useEffect(() => {
     // Verzögerungen für jede Karte
@@ -71,7 +71,7 @@ useEffect(() => {
                     }`}
                 >
                     <h3 className="text-xl font-semibold text-[#333333]  duration-300 group-hover:text-white">Ausloggen</h3>
-                    <p className="text-[#555555] group-hover:text-white duration-300" group-hover:text-white duration-300>Melden Sie sich von der Anwendung ab.</p>
+                    <p className="text-[#555555] group-hover:text-white duration-300">Melden Sie sich von der Anwendung ab.</p>
                 </div>
             </div>
             </div>
