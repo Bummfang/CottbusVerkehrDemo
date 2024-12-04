@@ -23,8 +23,8 @@ create table if not exists linie_haltestelle(
 );
 
 create table if not exists employee(
-    employee_id integer primary key,
-    name varchar(100) not null, 
+    employee_id integer primary key autoincrement,
+    name varchar(100) not null unique, 
     password varchar(200) not null,
     admin_key varchar(300)
 );

@@ -148,7 +148,7 @@ export default function Home() {
 
 
     return (
-        <div className="w-full h-screen flex flex-col relative">
+        <div className="w-full h-screen flex flex-col">
             {/* Red Cover with Loading Animation */}
             {loading && (
                 <div className={`absolute w-full h-full bg-red-600 z-50 flex justify-center items-center 
