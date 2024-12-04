@@ -1,26 +1,34 @@
-CREATE TABLE IF NOT EXISTS lines(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    type TEXT NOT NULL CHECK (type IN('Bus', 'Bahn')),
-    name TEXT NOT NULL
+CREATE TABLE IF NOT EXISTS linie(
+    line_ID integer PRIMARY KEY, 
+    start varchar(100) NOT NULL, 
+    ende varchar(100) NOT NULL,
+    hbf boolean NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS stops(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL
+create table if not exists haltestelle(
+    haltestelle_id integer primary key,
+    name varchar(100) not null,
+    latitude float,
+    longitude float 
 );
 
-CREATE TABLE IF NOT EXISTS plan_16(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    line_id INTEGER NOT NULL,
-    stop_id INTEGER NOT NULL,
-    stoptimes TEXT NOT NULL,
-    FOREIGN KEY (line_id) REFERENCES lines(id),
-    FOREIGN KEY (stop_id) REFERENCES stops(id)
+create table if not exists linie_haltestelle(
+    linie_haltestelle_id integer primary key,
+    linie_id integer not null,
+    haltestelle_id integer not null,
+    reihenfolge integer not null,
+    zeit TIMESTAMP not null,
+    foreign key(linie_id) references linie(linie_id),
+    foreign key(haltestelle_id) references haltestelle(haltestelle_id)
 );
 
-CREATE TABLE IF NOT EXISTS employees(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT NOT NULL UNIQUE,
-    passwort TEXT NOT NULL,
-    admin_key TEXT DEFAULT NULL
+create table if not exists employee(
+    employee_id integer primary key,
+    name varchar(100) not null, 
+    password varchar(200) not null,
+    admin_key varchar(300)
 );
+
+
+
+
