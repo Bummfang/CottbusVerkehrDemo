@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const MainMenu = (props: {
     toOptions: () => void;
     toDatabaseAccess: () => void;
+    toContentManagement: () => void;
     toLogin: () => void;
 }) => {
 // Zustand, um zu verfolgen, wann jede Karte sichtbar wird
@@ -41,7 +42,7 @@ useEffect(() => {
 
                 {/* Content Management Menü */}
                 <div
-                    onClick={props.toDatabaseAccess}
+                    onClick={props.toContentManagement}
                     className={`relative group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#c93636]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
                         showCards[1] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
                     }`}
