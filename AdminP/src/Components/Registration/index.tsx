@@ -1,21 +1,4 @@
-import axios from "axios";
-import { useState } from "react";
-
 const Registration = (props: { backToLogin: () => void }) => {
-
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
-
-
-  const [error, setError] = useState('');
-  const [, setSuccess] = useState('');
-
-
-
 
   return (
 
@@ -105,7 +88,7 @@ const Registration = (props: { backToLogin: () => void }) => {
         <p className="mt-2 text-[0.8rem] font-semibold">Hinweis: Die Registrierung ist nur für berechtigte Benutzer möglich. Stellen Sie sicher, dass Ihre E-Mail-Adresse korrekt ist.</p>
       </div>
 
-      <p>{error}</p>
+      <p></p>
     </>
   );
 }
