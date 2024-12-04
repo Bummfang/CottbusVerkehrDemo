@@ -7,7 +7,7 @@ const DatabaseAccess = (props:{
 
 
     return(
-        <div className=" bg-gray-100 select-none h-[90%] p-8 flex justify-center">
+        <div className=" bg-gray-100 select-none p-8 flex justify-center">
                 <div className="w-[90%] duration-700 bg-white p-6 rounded-lg shadow-lg">
                     {/* Optionen */}
                     <div className="animate-fadeInAnimation">
@@ -90,11 +90,12 @@ const DatabaseAccess = (props:{
                         </div>
                     </div>
                     {/* Buttons */}
-                    <div className="flex justify-end space-x-4">
-                    <div  className="bg-[#c93636] font-semibold text-white px-6 py-2 rounded-md hover:bg-[#a12d2d] duration-300" onClick={props.backToMainMenu}>
-                            Abbrechen
+                    <div className="flex justify-between mt-10">
+                    <div  className="bg-[#265d91] group flex justify-between hover:cursor-pointer hover:bg-[#356fa5]  items-center min-w-[10rem] font-semibold text-white px-6 py-2 rounded-md duration-300" onClick={props.backToMainMenu}>
+                           <img src="Graphic/arrow.svg" className="w-5 group-hover:-translate-x-3 duration-300" alt="Pfeil Icon für den zurück Knopf" />
+                           <p>zurück</p> 
                         </div>
-                        <div className="bg-[#3bbe76] font-semibold text-white px-6 py-2 duration-300 rounded-md hover:bg-[#309c61] ">
+                        <div className="bg-[#3bbe76] min-w-[10rem] text-center font-semibold text-white px-6 py-2 duration-300 rounded-md hover:bg-[#309c61] ">
                             Speichern
                         </div>
                     </div>
