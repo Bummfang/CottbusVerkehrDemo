@@ -9,9 +9,34 @@ const jwt = require('jsonwebtoken');  // Importiere jsonwebtoken
 const app = express();
 const port = 3000;
 
+
+
+
+const db = new sqlite3.Database('../db/Database.db', (err)=>{
+  if(err){
+    console.error('Error while connecting database.', err.message);
+  }
+});
+
+
+
+
+db.run((err)=>{
+  if(err){
+    console.log('Error while compiling database')
+  }
+  console.log('Database connection established');
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+
+
+
+
+
 
 
 
@@ -20,13 +45,8 @@ app.get('/api/connection',(req,res) => {
    res.status(200).json({
     connection:'OK'
   });
-})
-
-app.get('/api/hello', (req,res) => {
-  res.status(200).json({
-    hello:"hello from backend"
-  });
 });
+
 
 
 app.post('/api/login', (req,res) => {
@@ -36,6 +56,8 @@ app.post('/api/login', (req,res) => {
       message:"Nutzer erkannt"
     });
   }
+
+
   else if(username === "Max" && password === "123" && adminkey === '111'){
     res.status(200).json({
       message:"Nutzer erkannt"
@@ -46,8 +68,12 @@ app.post('/api/login', (req,res) => {
       message:"Kein valider Nuzer"
     })
   }
-})
+});
 
+
+app.post('/api/register', (req, res) => {
+  
+});
   
 app.listen(port, () => {
     console.log(`Server läuft auf http://localhost:${port}`);
