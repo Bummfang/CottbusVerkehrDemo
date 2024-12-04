@@ -23,15 +23,15 @@ const Login = (props: {
         password,
         adminkey
       });
-      setBackendMessage(response.data.message);
+      setBackendMessage(response.data.message + "!");
       const timer = setTimeout(() => {
         props.login();
     }, 1000); 
     return () => clearTimeout(timer);
     }
     catch (err) {
-      console.error("Nutzer nicht erkannt",err);
-      setBackendMessage("Nutzer nicht erkannt");
+      console.error("Nutzer nicht erkannt !",err);
+      setBackendMessage("Nutzer nicht erkannt !");
     }
   };
 
@@ -40,7 +40,7 @@ const Login = (props: {
 
   return (
     <>
-      <div className="w-full h-full flex flex-col select-none items-center justify-center animate-fadeInAnimation">
+      <div className="w-full h-full flex flex-col select-none items-center mt-[10%] animate-fadeInAnimation">
         {/* Outer container for centering the form with animation */}
         <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-xl duration-300">
           <h2 className="text-center text-2xl font-bold text-[#c93636] mb-6">Anmeldung</h2>
@@ -107,10 +107,13 @@ const Login = (props: {
           </form>
         </div >
 
+
+
+
         {/* Informational text below the form */}
-        < p className="mt-10 text-[1.2rem] font-semibold p-1 text-center" > Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p >
+        < p className="mt-10 text-[1.2rem] font-semibold p-1 text-center" >Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p >
         <p className="mt-2 text-[0.8rem] font-semibold p-1 text-center">Hinweis: Bitte melden Sie sich nur mit entsprechender Berechtigung an. Fehlerhafte Anmeldeversuche werden aus Sicherheitsgründen protokolliert.</p>
-        <p className="mt-2 text-[0.8rem] font-semibold p-1 text-center text-red-700">{backendMessage}</p>
+        <div className={`mt-5 border rounded-xl bg-[#353535] text-[0.8rem] font-semibold p-1 text-center text-white px-3 ${backendMessage === "" ? "opacity-0":"opacity-100"}`}>{backendMessage}</div>
       </div >
     </>
   );

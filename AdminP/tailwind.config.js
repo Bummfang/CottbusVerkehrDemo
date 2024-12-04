@@ -12,6 +12,23 @@ export default {
         'spin-slow': 'spin 1s linear infinite',
         'slide-in': 'slideIn 0.5s ease-out forwards',
       },
+        screens: {
+          'mobile': "0px",
+          // => @media (min-width: 0px) { ... }
+          'tablet': "640px",
+          // => @media (min-width: 640px) { ... }
+          'laptop': "1024px",
+          // => @media (min-width: 1024px) { ... }
+          'desktop': "1280px",
+          // => @media (min-width: 1280px) { ... }
+          'desktop-l': "1920px",
+          // => @media (min-width: 1280px) { ... }
+          'desktop-xl': "2560px",
+          // => @media (min-width: 1280px) { ... }
+          'desktop-xxl': "3840px",
+          // => @media (min-width: 1280px) { ... }
+          'tablet-contact' : "702px",
+      },
       keyframes: {
         pulseBackground: {
           '0%': { transform: 'scale(1)', opacity: '1' },  // Anfangszustand

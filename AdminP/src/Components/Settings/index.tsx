@@ -59,16 +59,6 @@ const Settings = (props: {
 
 
 
-    // Funktion zum Zurückkehren
-    const handleBack = () => {
-        // Zurück zur Hauptmenu oder Login-Seite
-        alert("Zurück zur Hauptseite!");
-    };
-
-
-
-
-
     return (
         <div className="bg-gray-100 select-none p-8 h-full">
             <div className="w-full max-w-[600px] mx-auto animate-fadeInAnimation bg-white p-6 rounded-lg shadow-lg">

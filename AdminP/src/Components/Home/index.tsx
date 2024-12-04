@@ -5,6 +5,11 @@ import Registration from "../Registration"; // Importing the Registration compon
 import MainMenu from "../MainMenu";
 import Settings from "../Settings";
 import axios from 'axios';
+import ContentManagement from "../ContentManagement";
+
+
+
+
 
 export default function Home() {
     // pageSelector is a state variable to track which page to render.
@@ -13,12 +18,38 @@ export default function Home() {
     const [loading, setLoading] = useState(true);
     // status led state
     const [connection, setConnection] = useState(false);
+    // Time Display
+    const [time, setTime] = useState<string>(new Date().toLocaleTimeString());
+
+
+
+
     // Components to render based on pageSelector
     const loginComponent = <Login toRegistration={() => setPageSelector(1)} login={() => setPageSelector(3)} />;
     const databaseAccess = <DatabaseAccess backToMainMenu={() => setPageSelector(3)} />;
     const registrationComponent = <Registration backToLogin={() => setPageSelector(0)} />;
-    const mainMenu = <MainMenu toLogin={() => setPageSelector(0)} toDatabaseAccess={() => setPageSelector(2)} toOptions={() => setPageSelector(4)}></MainMenu>
+    const mainMenu = <MainMenu toContentManagement={() => setPageSelector(5)} toLogin={() => setPageSelector(0)} toDatabaseAccess={() => setPageSelector(2)} toOptions={() => setPageSelector(4)}></MainMenu>
     const settings = <Settings backToMainMenu={() => setPageSelector(3)}></Settings>
+    const contentManagement = <ContentManagement backToMainMenu={()=> setPageSelector(3)}></ContentManagement>
+
+
+
+
+    // Script Componens
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Function to render the correct page based on pageSelector
     const renderPage = () => {
@@ -33,13 +64,29 @@ export default function Home() {
                 return mainMenu;
             case 4:
                 return settings;
+            case 5:
+                return contentManagement;
             default: // Default case, render Login
                 return loginComponent;
         }
     };
 
 
-    
+
+
+    // UseEffect for time feature
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTime(new Date().toLocaleTimeString());
+        }, 1000);
+
+        return () => {
+            clearInterval(timer);
+        };
+    }, []);
+
+
+
     // Simulate loading (show the cover for 3 seconds, then slide out)
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -52,6 +99,10 @@ export default function Home() {
 
 
 
+
+
+    // --------------------------------------------------------------------  API REQUESTS
+
     // Api request for status led
     useEffect(() => {
         const checkConnection = async () => {
@@ -60,11 +111,11 @@ export default function Home() {
                 if (response.status === 200) {
                     console.log("Connection is successful");
                     setConnection(true);
-                  
+
 
                 }
             }
-            catch(err){
+            catch {
                 setConnection(false);
             }
         };
@@ -72,7 +123,26 @@ export default function Home() {
         console.log(connection);
         const interval = setInterval(checkConnection, 3000);
         return () => clearInterval(interval);
-    }, []);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -90,7 +160,7 @@ export default function Home() {
             )}
 
             {/* Main Content Section */}
-            <div className={`w-full h-full bg-slate-100 ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
+            <div className={`w-full h-full relative bg-slate-100 ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity fixed top-0 duration-500`}>
                 <div className="w-full bg-slate-100">
                     <div className="w-full h-[8rem] bg-[#c93636] select-none flex items-center justify-between rounded-b-2xl border-b-2 border-slate-100">
                         {/* Title */}
@@ -116,16 +186,19 @@ export default function Home() {
 
 
             {/* Footer Section */}
-            <div className="w-full bg-slate-100 select-none">
+            <div className="w-full bg-slate-100 select-none fixed bottom-0">
                 <div className="h-[8rem] bg-[#c93636] mt-auto flex justify-between items-center rounded-t-xl">
-                    <div></div>
-                    <div className="flex justify-center items-center">
-                        {/* Status Text */}
-                        <p className="font-bold text-white text-[0.8rem]">Netzwerkstatus</p>
+
+                    <div className="flex justify-center items-center pl-5">
                         {/* Status Indicator */}
-                        <div className={`w-4 h-4 rounded-full mr-10 ml-4 duration-300 ${connection ? "bg-green-400" : "bg-yellow-400"}`}>
+                        <div className={`w-4 h-4 rounded-full ml-4 duration-300 ${connection ? "bg-green-400" : "bg-yellow-400"}`}>
                             <div className={`rounded-full w-4 h-4 animate-pulse-background duration-300 ${connection ? "bg-green-600" : "bg-yellow-600"}`} />
                         </div>
+                        {/* Status Text */}
+                        <p className="font-bold text-white text-[0.8rem] pl-4">Netzwerkstatus</p>
+                    </div>
+                    <div>
+                        <p className="text-white font-bold text-[1rem] mr-10">{time}</p>
                     </div>
                 </div>
             </div>
