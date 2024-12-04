@@ -41,69 +41,64 @@ app.get('/api/connection', (req, res) => {
 
 
 
-app.post('/api/login', (req, res) => {
-  const { username, password, adminkey } = req.body;
-  if (username === "Nils" && password === "123" && adminkey === '000') {
-    res.status(200).json({
-      message: "Nutzer erkannt"
-    });
-  }
+app.post('/api/login', async (req, res) => {
+  try {
+    const { username, password, adminkey } = req.body;
 
+    // Validierung
+    if (!username || !password) {
+      return res.status(400).json({ error: 'Benutzername und Passwort sind erforderlich.' });
+    }
 
-  else if (username === "Max" && password === "123" && adminkey === '111') {
-    res.status(200).json({
-      message: "Nutzer erkannt"
+    // SQL-Abfrage, um das Passwort des Nutzers zu bekommen
+    db.get(`SELECT password FROM employee WHERE name = ?`, [username], async function (err, row) {
+      if (err) {
+        return res.status(500).json({ error: 'Fehler beim Abrufen des Nutzers: ' + err.message });
+      }
+
+      if (!row) {
+        return res.status(404).json({ error: 'Benutzer nicht gefunden' });
+      }
+
+      // Passwortvergleich
+      const match = await bcrypt.compare(password, row.password);
+      if (match) {
+        // Erfolgreiche Anmeldung
+        return res.status(200).json({ message: 'Erfolgreich eingeloggt' });
+      } else {
+        // Ungültiges Passwort
+        return res.status(401).json({ error: 'Falsches Passwort' });
+      }
     });
-  }
-  else {
-    res.status(500).json({
-      message: "Kein valider Nutzer"
-    })
+  } catch (error) {
+    return res.status(500).json({ error: 'Fehler beim Login: ' + error.message });
   }
 });
 
 
+
 app.post('/api/register', async (req, res) => {
   try {
-    const { username, passwort, adminkey } = req.body;
+    const { username, password, adminKey } = req.body;
     // Validierung
-    if (!name || !email || !password || !adminkey) {
-      return res.status(400).json({ error: 'Name, E-Mail, Passwort und Admin-Key sind erforderlich.' });
+    if (!username || !password || !adminKey) {
+      return res.status(400).json({ error: 'Name, Passwort und Admin-Key sind erforderlich.' });
     }
 
     const saltRounds = 10;
-    const hashedPasswort = await bcrypt.hash(passwort, saltRounds);
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
     console.log(`Username: ${username}, Hashed Password: ${hashedPassword}`);
 
-    res.status(200).json({
-      message: "hashing password complete"
-    });
-
-    if (!name || !email) {
-      return res.status(400).json({ error: 'Name und E-Mail sind erforderlich.' });
-
-    }
-
-    const sql = `INSERT INTO employee (name, email, password, adminkey) VALUES (?, ?, ?, ?)`;
-    db.run(sql, [name, email, hashedPasswort, adminkey], function (err) {
+    const sql = `INSERT INTO employee (name, password, admin_key) VALUES (?, ?, ?)`;
+    db.run(sql, [username, hashedPassword, adminKey], function (err) {
       if (err) {
         return res.status(500).json({ error: 'Fehler beim Registrierungsprozess: ' + err.message });
       }
       res.status(201).json({ message: 'Mitarbeiter hinzugefügt', employeeId: this.lastID });
     });
-
-
-
-
-
-
-
-
-
-
   }
   catch (err) {
-    res.status(500).json({ message: "error while hashing passwort" });
+    res.status(500).json({ message: "error while hashing password" });
   }
 });
 

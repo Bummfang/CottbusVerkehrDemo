@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 const Registration = (props: { backToLogin: () => void }) => {
@@ -9,7 +10,25 @@ const Registration = (props: { backToLogin: () => void }) => {
   const [adminKey,setAdminKey] = useState<string>('');
 
 
-
+  const handleLogin = async (event: React.FormEvent) => {
+    event.preventDefault();
+    try {
+      if (password !== confirmPasswort) {
+        console.error("Passwörter stimmen nicht überein !");
+        return;
+      }
+      // console.log(username,password,adminKey);
+      const response = await axios.post("http://localhost:3000/api/register", {
+        username,
+        password,
+        adminKey
+      });
+      console.log(response.data.message + "!");
+    }
+    catch (err) {
+      console.error("Nutzer nicht erkannt !",err);
+    }
+  };
 
   return (
 
@@ -24,13 +43,14 @@ const Registration = (props: { backToLogin: () => void }) => {
           <h2 className="text-center text-2xl font-bold text-[#265d91] mb-6">Registrierung</h2>
 
           {/* Form element */}
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={(e) => handleLogin(e)}>
             {/* Username input field */}
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">Benutzername*</label>
               <input
                 id="username"
                 type="text"
+                onChange={(e) => setUsername(e.target.value)}
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
                 placeholder="Benutzername eingeben"
                 required // Ensures the field is mandatory
@@ -45,6 +65,7 @@ const Registration = (props: { backToLogin: () => void }) => {
               <input
                 id="password"
                 type="password"
+                onChange={(e) => setPassword(e.target.value)}
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
                 placeholder="Passwort eingeben"
                 required // Ensures the field is mandatory
@@ -57,6 +78,7 @@ const Registration = (props: { backToLogin: () => void }) => {
               <input
                 id="confirmPassword"
                 type="password"
+                onChange={(e) => setConfirmPasswort(e.target.value)}
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
                 placeholder="Passwort erneut eingeben"
                 required // Ensures the field is mandatory
@@ -68,7 +90,8 @@ const Registration = (props: { backToLogin: () => void }) => {
               <label htmlFor="adminKey" className="block text-sm font-medium text-gray-700">Admin Key</label>
               <input
                 id="adminKey"
-                type="email"
+                type="text"
+                onChange={(e) => setAdminKey(e.target.value)}
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
                 placeholder="Admin Key eingeben"
                 required // Ensures the field is mandatory
