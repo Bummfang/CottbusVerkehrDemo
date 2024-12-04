@@ -1,7 +1,42 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const Login = (props: {
   login: () => void;
   toRegistration: () => void;
 }) => {
+
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [adminkey, setAdminKey] = useState<string>('');
+  const [backendMessage, setBackendMessage] = useState<string>('');
+
+
+
+
+
+  const handleLogin = async (event: React.FormEvent) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3000/api/login", {
+        username,
+        password,
+        adminkey
+      });
+      setBackendMessage(response.data.message);
+      const timer = setTimeout(() => {
+        props.login();
+    }, 3000); 
+    return () => clearTimeout(timer);
+    }
+    catch (err) {
+      console.error("Fehler bein Senden:",err);
+      setBackendMessage("Fehler bein Senden:");
+    }
+  };
+
+
+
 
   return (
     <>
@@ -11,7 +46,7 @@ const Login = (props: {
           <h2 className="text-center text-2xl font-bold text-[#c93636] mb-6">Anmeldung</h2>
           {/* Header section with the title of the form */}
 
-          <form className="space-y-6" onSubmit={props.login}>
+          <form className="space-y-6" onSubmit={handleLogin}>
             {/* Form container with a 6-unit space between form elements */}
 
             {/* Username input field */}
@@ -23,6 +58,7 @@ const Login = (props: {
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
                 placeholder="Benutzername eingeben"
                 required
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
 
@@ -35,6 +71,7 @@ const Login = (props: {
                 className="mt-1 block w-full px-4 py-2 border  border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
                 placeholder="Passwort eingeben"
                 required
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -46,6 +83,7 @@ const Login = (props: {
                 type="text"
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
                 placeholder="Administrator-Schlüssel eingeben"
+                onChange={(e) => setAdminKey(e.target.value)}
               />
             </div>
 
@@ -58,20 +96,21 @@ const Login = (props: {
                 Registration
               </div>
 
-            <button
-              type="submit"
-              className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#3bbe76] text-white font-semibold rounded-md hover:bg-[#309c61] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
-            >
-              Anmeldung
-            </button>
-        </div>
+              <button
+                type="submit"
+                className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#3bbe76] text-white font-semibold rounded-md hover:bg-[#309c61] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
+              >
+                Anmeldung
+              </button>
+            </div>
 
-      </form>
-    </div >
+          </form>
+        </div >
 
-      {/* Informational text below the form */ }
-      < p className = "mt-10 text-[1.2rem] font-semibold p-1 text-center" > Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p >
+        {/* Informational text below the form */}
+        < p className="mt-10 text-[1.2rem] font-semibold p-1 text-center" > Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p >
         <p className="mt-2 text-[0.8rem] font-semibold p-1 text-center">Hinweis: Bitte melden Sie sich nur mit entsprechender Berechtigung an. Fehlerhafte Anmeldeversuche werden aus Sicherheitsgründen protokolliert.</p>
+        <p className="mt-2 text-[0.8rem] font-semibold p-1 text-center text-red-700">{backendMessage}</p>
       </div >
     </>
   );

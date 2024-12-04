@@ -13,7 +13,6 @@ export default function Home() {
     const [loading, setLoading] = useState(true);
     // status led state
     const [connection, setConnection] = useState(false);
-
     // Components to render based on pageSelector
     const loginComponent = <Login toRegistration={() => setPageSelector(1)} login={() => setPageSelector(3)} />;
     const databaseAccess = <DatabaseAccess backToMainMenu={() => setPageSelector(3)} />;
@@ -72,8 +71,6 @@ export default function Home() {
         const interval = setInterval(checkConnection, 3000);
         return () => clearInterval(interval);
     }, []);
-
-
 
 
 

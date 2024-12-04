@@ -22,6 +22,31 @@ app.get('/api/connection',(req,res) => {
   });
 })
 
+app.get('/api/hello', (req,res) => {
+  res.status(200).json({
+    hello:"hello from backend"
+  });
+});
+
+
+app.post('/api/login', (req,res) => {
+  const {username, password, adminkey} = req.body;
+  if(username === "Nils" && password === "123" && adminkey === '000'){
+    res.status(200).json({
+      message:"Nutzer erkannt"
+    });
+  }
+  else if(username === "Max" && password === "123" && adminkey === '111'){
+    res.status(200).json({
+      message:"Nutzer erkannt"
+    });
+  }
+  else {
+    res.status(500).json({
+      message:"Kein valider Nuzer"
+    })
+  }
+})
 
   
 app.listen(port, () => {
