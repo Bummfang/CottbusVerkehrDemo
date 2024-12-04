@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS haltestelle(
+CREATE TABLE IF NOT EXISTS linie(
     line_ID integer PRIMARY KEY, 
     start varchar(100) NOT NULL, 
     ende varchar(100) NOT NULL,
