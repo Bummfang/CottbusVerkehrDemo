@@ -1,4 +1,15 @@
+import { useState } from "react";
+
 const Registration = (props: { backToLogin: () => void }) => {
+
+
+  const [username,setUsername] = useState<string>('');
+  const [password,setPassword] = useState<string>('');
+  const [confirmPasswort,setConfirmPasswort] = useState<string>('');
+  const [adminKey,setAdminKey] = useState<string>('');
+
+
+
 
   return (
 
@@ -26,17 +37,7 @@ const Registration = (props: { backToLogin: () => void }) => {
               />
             </div>
 
-            {/* Email input field */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Mitarbeiter/in E-Mail*</label>
-              <input
-                id="email"
-                type="email"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
-                placeholder="E-Mail-Adresse eingeben"
-                required // Ensures the field is mandatory
-              />
-            </div>
+
 
             {/* Password input field */}
             <div>
@@ -58,6 +59,18 @@ const Registration = (props: { backToLogin: () => void }) => {
                 type="password"
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
                 placeholder="Passwort erneut eingeben"
+                required // Ensures the field is mandatory
+              />
+            </div>
+
+            {/* Email input field */}
+            <div>
+              <label htmlFor="adminKey" className="block text-sm font-medium text-gray-700">Admin Key</label>
+              <input
+                id="adminKey"
+                type="email"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#c93636] focus:border-[#c93636] placeholder-gray-400 text-white bg-slate-800"
+                placeholder="Admin Key eingeben"
                 required // Ensures the field is mandatory
               />
             </div>
