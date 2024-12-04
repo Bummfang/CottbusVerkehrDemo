@@ -4,18 +4,21 @@ import DatabaseAccess from "../DatabaseAccess"; // Importing the DatabaseAccess 
 import Registration from "../Registration"; // Importing the Registration component
 import MainMenu from "../MainMenu";
 import Settings from "../Settings";
+import axios from 'axios';
 
 export default function Home() {
     // pageSelector is a state variable to track which page to render.
     const [pageSelector, setPageSelector] = useState(0);
     // loading state to manage loading screen
     const [loading, setLoading] = useState(true);
+    // status led state
+    const [connection, setConnection] = useState(false);
 
     // Components to render based on pageSelector
     const loginComponent = <Login toRegistration={() => setPageSelector(1)} login={() => setPageSelector(3)} />;
     const databaseAccess = <DatabaseAccess backToMainMenu={() => setPageSelector(3)} />;
     const registrationComponent = <Registration backToLogin={() => setPageSelector(0)} />;
-    const mainMenu = <MainMenu toLogin={()=>setPageSelector(0)} toDatabaseAccess={() => setPageSelector(2)} toOptions={() => setPageSelector(4)}></MainMenu>
+    const mainMenu = <MainMenu toLogin={() => setPageSelector(0)} toDatabaseAccess={() => setPageSelector(2)} toOptions={() => setPageSelector(4)}></MainMenu>
     const settings = <Settings backToMainMenu={() => setPageSelector(3)}></Settings>
 
     // Function to render the correct page based on pageSelector
@@ -27,7 +30,7 @@ export default function Home() {
                 return registrationComponent;
             case 2: // If pageSelector is 2, render DatabaseAccess
                 return databaseAccess;
-            case 3: 
+            case 3:
                 return mainMenu;
             case 4:
                 return settings;
@@ -44,6 +47,30 @@ export default function Home() {
 
         return () => clearTimeout(timer); // Cleanup timeout on component unmount
         // Loading for low latancy computers or bad internet connection
+    }, []);
+
+
+
+    // Api request for status led
+    useEffect(() => {
+        const checkConnection = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/connection');
+                if (response.status === 200) {
+                    console.log("Connection is successful");
+                    setConnection(true);
+                  
+
+                }
+            }
+            catch(err){
+                setConnection(false);
+            }
+        };
+        checkConnection();
+        console.log(connection);
+        const interval = setInterval(checkConnection, 3000);
+        return () => clearInterval(interval);
     }, []);
 
 
@@ -95,10 +122,10 @@ export default function Home() {
                     <div></div>
                     <div className="flex justify-center items-center">
                         {/* Status Text */}
-                        <p className="font-bold text-white">Status</p>
+                        <p className="font-bold text-white text-[0.8rem]">Netzwerkstatus</p>
                         {/* Status Indicator */}
-                        <div className={`w-4 h-4 rounded-full mr-10 ml-4 duration-300 ${pageSelector !== 0 ? "bg-green-400" : "bg-yellow-400"}`}>
-                            <div className={`rounded-full w-4 h-4 animate-pulse-background duration-300 ${pageSelector !== 0 ? "bg-green-600" : "bg-yellow-600"}`} />
+                        <div className={`w-4 h-4 rounded-full mr-10 ml-4 duration-300 ${connection ? "bg-green-400" : "bg-yellow-400"}`}>
+                            <div className={`rounded-full w-4 h-4 animate-pulse-background duration-300 ${connection ? "bg-green-600" : "bg-yellow-600"}`} />
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ export default {
       keyframes: {
         pulseBackground: {
           '0%': { transform: 'scale(1)', opacity: '1' },  // Anfangszustand
-          '100%': { transform: 'scale(3)', opacity: '0' }, // Mittlerer Zustand 
+          '100%': { transform: 'scale(2.5)', opacity: '0' }, // Mittlerer Zustand 
           // Endzustand (Wiederholung)
         },
         fadeIn: {
