@@ -12,42 +12,9 @@ const Registration = (props: { backToLogin: () => void }) => {
 
 
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [, setSuccess] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setSuccess('');
-
-    const { username, email, password, confirmPassword } = formData;
-
-    if (password !== confirmPassword) {
-      setError('Passwörter stimmen nicht überein.');
-      return;
-    }
-
-    try {
-      await axios.post('/api/register', {
-        username,
-        passwort: password,
-        email,
-      });
-
-      setSuccess('Registrierung erfolgreich!');
-      setFormData({
-        username: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      });
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Ein Fehler ist aufgetreten.');
-    }
-  };
 
 
   return (
@@ -63,7 +30,7 @@ const Registration = (props: { backToLogin: () => void }) => {
           <h2 className="text-center text-2xl font-bold text-[#265d91] mb-6">Registrierung</h2>
 
           {/* Form element */}
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-6">
             {/* Username input field */}
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">Benutzername*</label>
