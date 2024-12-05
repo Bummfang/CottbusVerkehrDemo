@@ -42,7 +42,7 @@ const Login = (props: {
 
   return (
     <>
-      <div className="w-full h-full flex flex-col select-none items-center mt-[10%] animate-fadeInAnimation">
+      <div className="w-full h-full flex flex-col select-none items-center mt-[5%] animate-fadeInAnimation">
         {/* Outer container for centering the form with animation */}
         <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-xl duration-300">
           <h2 className="text-center text-2xl font-bold text-[#c93636] mb-6">Anmeldung</h2>
