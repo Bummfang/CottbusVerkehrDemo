@@ -109,7 +109,6 @@ export default function Home() {
             try {
                 const response = await axios.get('http://localhost:3000/api/connection');
                 if (response.status === 200) {
-                    console.log("Connection is successful");
                     setConnection(true);
 
 
@@ -120,7 +119,6 @@ export default function Home() {
             }
         };
         checkConnection();
-        console.log(connection);
         const interval = setInterval(checkConnection, 3000);
         return () => clearInterval(interval);
     });
@@ -148,7 +146,7 @@ export default function Home() {
 
 
     return (
-        <div className="w-full h-screen flex flex-col relative">
+        <div className="w-full h-screen flex flex-col">
             {/* Red Cover with Loading Animation */}
             {loading && (
                 <div className={`absolute w-full h-full bg-red-600 z-50 flex justify-center items-center 
