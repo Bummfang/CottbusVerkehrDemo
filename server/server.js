@@ -52,10 +52,7 @@ app.post('/api/login', async (req, res) => {
 
     // SQL-Abfrage, um das Passwort des Nutzers zu bekommen
     db.get(`SELECT password FROM employee WHERE name = ?`, [username], async function (err, row) {
-      if (err) {
-        return res.status(500).json({ error: 'Fehler beim Abrufen des Nutzers: ' + err.message });
-      }
-
+ 
       if (!row) {
         return res.status(404).json({ error: 'Benutzer nicht gefunden' });
       }
@@ -64,7 +61,7 @@ app.post('/api/login', async (req, res) => {
       const match = await bcrypt.compare(password, row.password);
       if (match) {
         // Erfolgreiche Anmeldung
-        return res.status(200).json({ message: 'Erfolgreich eingeloggt' });
+        return res.status(200).json({ message: 'Erfolgreich angemeldet' });
       } else {
         // Ungültiges Passwort
         return res.status(401).json({ error: 'Falsches Passwort' });

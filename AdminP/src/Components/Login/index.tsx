@@ -13,9 +13,6 @@ const Login = (props: {
 
 
 
-
-
-
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
@@ -37,7 +34,6 @@ const Login = (props: {
   };
 
 
-  
 
 
   return (
@@ -108,9 +104,6 @@ const Login = (props: {
 
           </form>
         </div >
-
-
-
 
         {/* Informational text below the form */}
         < p className="mt-10 text-[1.2rem] font-semibold p-1 text-center" >Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p >
