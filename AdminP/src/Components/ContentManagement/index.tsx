@@ -21,7 +21,7 @@ const ContentManagement = (props:{
     }, []);
 
     return (
-        <div className="w-full p-6 mt-[10%] flex flex-col items-center text-slate-100">
+        <div className="w-full p-6 mt-10 flex flex-col items-center text-slate-100">
             <h2 className="text-3xl font-bold text-center text-slate-100 mb-8">
                 Content Management
             </h2>

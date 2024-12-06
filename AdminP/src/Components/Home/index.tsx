@@ -6,6 +6,8 @@ import MainMenu from "../MainMenu";
 import Settings from "../Settings";
 import axios from 'axios';
 import ContentManagement from "../ContentManagement";
+import ConnectionIcon from "../Svg/connection";
+import NoConnectionIcon from "../Svg/noconnection";
 
 
 
@@ -56,6 +58,17 @@ export default function Home() {
         }
     };
 
+        // Function to render the correct page based on pageSelector
+        const connectionIcon = () => {
+            switch (connection) {
+                case true: // If pageSelector is 0, render Login
+                    return <ConnectionIcon className="w-8 h-8 duration-300 fill-[#d4d4d4]"></ConnectionIcon>;
+                case false: // If pageSelector is 1, render Registration
+                    return <NoConnectionIcon className="w-8 h-8 duration-300 fill-[#d4d4d4]"></NoConnectionIcon>;
+                default: 
+                    return <NoConnectionIcon className="w-8 h-8 duration-300 fill-[#d4d4d4]"></NoConnectionIcon>;
+            }
+        };
 
 
     // UseEffect for time feature
@@ -137,13 +150,8 @@ export default function Home() {
             <div className={`w-full h-screen relative bg-[#c22727] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity fixed top-0 duration-500`}>
                 <div className="h-[8rem] bg-[#c22727] mt-auto flex justify-between items-center rounded-t-xl">
 
-                    <div className="flex justify-center items-center pl-5">
-                        {/* Status Indicator */}
-                        <div className={`w-4 h-4 rounded-full duration-300 ${connection ? "bg-green-400" : "bg-yellow-400"}`}>
-                            <div className={`rounded-full w-4 h-4 animate-pulse-background duration-300 ${connection ? "bg-green-600" : "bg-yellow-600"}`} />
-                        </div>
-                        {/* Status Text */}
-                        <p className="font-bold text-white text-[0.8rem] pl-4">Netzwerkstatus</p>
+                    <div className="flex flex-col justify-center items-center ml-10 pl-5">
+                    {connectionIcon()}           
                     </div>
                     <div>
                         <p className="text-white font-bold text-[1rem] mr-10">{time}</p>
