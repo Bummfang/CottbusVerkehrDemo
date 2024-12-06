@@ -3,12 +3,11 @@
 @tailwind utilities;
 
 
-/* Scrollleiste vollständig ausblenden */
+
 ::-webkit-scrollbar {
     display: none;
   }
-  
-  /* Funktioniert auch für andere Browser */
+
   body {
     -ms-overflow-style: none;  /* IE und Edge */
     scrollbar-width: none;     /* Firefox */

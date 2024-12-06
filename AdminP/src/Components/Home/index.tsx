@@ -58,17 +58,17 @@ export default function Home() {
         }
     };
 
-        // Function to render the correct page based on pageSelector
-        const connectionIcon = () => {
-            switch (connection) {
-                case true: // If pageSelector is 0, render Login
-                    return <ConnectionIcon className="w-8 h-8 duration-300 fill-[#d4d4d4]"></ConnectionIcon>;
-                case false: // If pageSelector is 1, render Registration
-                    return <NoConnectionIcon className="w-8 h-8 duration-300 fill-[#d4d4d4]"></NoConnectionIcon>;
-                default: 
-                    return <NoConnectionIcon className="w-8 h-8 duration-300 fill-[#d4d4d4]"></NoConnectionIcon>;
-            }
-        };
+    // Function to render the correct page based on pageSelector
+    const connectionIcon = () => {
+        switch (connection) {
+            case true: // If pageSelector is 0, render Login
+                return <ConnectionIcon className="w-8 h-8 duration-300 fill-[#d4d4d4]"></ConnectionIcon>;
+            case false: // If pageSelector is 1, render Registration
+                return <NoConnectionIcon className="w-8 h-8 duration-300 fill-[#d4d4d4]"></NoConnectionIcon>;
+            default:
+                return <NoConnectionIcon className="w-8 h-8 duration-300 fill-[#d4d4d4]"></NoConnectionIcon>;
+        }
+    };
 
 
     // UseEffect for time feature
@@ -149,12 +149,14 @@ export default function Home() {
             {/* Main Content Section */}
             <div className={`w-full h-full bg-[#c22727] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity top-0 duration-500`}>
                 <div className="h-[8rem] bg-[#c22727] mt-auto flex justify-between items-center rounded-t-xl">
-
-                    <div className="flex flex-col justify-center items-center ml-10 pl-5">
-                    {connectionIcon()}           
-                    </div>
-                    <div>
-                        <p className="text-white font-bold text-[1rem] mr-10">{time}</p>
+                    <div></div>
+                    <div className="flex justify-center items-center mr-4">
+                        <div>
+                            <p className="text-white font-bold text-[1rem]">{time}</p>
+                        </div>
+                        <div className="flex flex-col justify-center items-center mx-3 pl-5">
+                            {connectionIcon()}
+                        </div>
                     </div>
                 </div>
 

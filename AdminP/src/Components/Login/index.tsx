@@ -39,7 +39,7 @@ const Login = (props: {
     <>
       <div className="w-full h-full flex bg-[#c22727] flex-col select-none items-center mt-[5%] animate-fadeInAnimation">
         {/* Outer container for centering the form with animation */}
-        <div className="bg-white p-8 rounded-2xl hover:scale-[102%]  shadow-xl w-full max-w-xl duration-300">
+        <div className="bg-white p-8 rounded-2xl hover:scale-[102%] mt-5  shadow-xl w-full max-w-xl duration-300">
           <div className="w-full flex justify-center items-center">
           <img className="h-[7rem]" src="/Graphic/logo.png" alt="" />
           </div>
