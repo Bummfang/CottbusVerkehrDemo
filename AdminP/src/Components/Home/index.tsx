@@ -142,7 +142,7 @@ export default function Home() {
                     ${loading ? 'animate-none' : 'animate-slide-out'}`}>
 
                     {/* Loading Spinner */}
-                    <div className="border-t-4 border-b-4 border-white rounded-full w-16 h-16 animate-spin-slow mt-20"></div>
+                    <div className="border-t-4 flex justify-center items-center border-b-4 border-white text-[3.2rem] text-slate-100 font-bold w-16 h-16 animate-spin-slow mt-20">OG</div>
                 </div>
             )}
 
@@ -163,7 +163,7 @@ export default function Home() {
 
 
                 {/* ---------------------------------    Render the current page    ------------------------------------ */}
-                <div className="w-full h-full bg-[#c22727] flex justify-center items-center">
+                <div className="w-full h-full bg-[#c22727] flex justify-center">
                     {renderPage()}
                 </div>
 

@@ -39,10 +39,10 @@ const Registration = (props: { backToLogin: () => void; }) => {
 
     <>
       {/* Main container for centering the form */}
-      <div className="w-full h-full flex select-none flex-col items-center mt-10 animate-fadeInAnimation">
+      <div className="w-full h-full flex select-none flex-col items-center mt-[15%] animate-fadeInAnimation">
 
         {/* Form container with padding, shadow, and maximum width */}
-        <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-xl duration-300">
+        <div className="bg-white p-8 rounded-3xl shadow-lg w-full max-w-xl duration-300">
 
           {/* Title of the form */}
           <h2 className="text-center text-2xl font-bold text-[#265d91] mb-6">Registrierung</h2>
