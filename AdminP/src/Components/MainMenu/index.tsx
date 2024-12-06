@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react";
+import ContentManagementIcon from "../Svg/contentmanagement";
+import DatabaseIcon from "../Svg/database";
+import LogoutIcon from "../Svg/logout";
+import SettingsIcon from "../Svg/setting";
+
 
 const MainMenu = (props: {
     toOptions: () => void;
@@ -6,74 +10,34 @@ const MainMenu = (props: {
     toContentManagement: () => void;
     toLogin: () => void;
 }) => {
-// Zustand, um zu verfolgen, wann jede Karte sichtbar wird
-const [showCards, setShowCards] = useState<boolean[]>([false, false, false, false]);
 
-useEffect(() => {
-    // Verzögerungen für jede Karte
-    const timers = [
-        setTimeout(() => setShowCards([true, false, false, false]), 200),
-        setTimeout(() => setShowCards([true, true, false, false]), 400),
-        setTimeout(() => setShowCards([true, true, true, false]), 600),
-        setTimeout(() => setShowCards([true, true, true, true]), 800)
-    ];
 
-    // Cleanup der Timer
-    return () => timers.forEach(clearTimeout);
-}, []);
 
     return (
-        <div className="w-full bg-slate-100 p-6 pl-10 select-none flex flex-col 
-         desktop-l:items-start desktop-l:mt-0  mobile:items-center mobile:mt-[3rem]">
-            <div className="desktop-l:ml-10 mobile:ml-0">
-            <h2 className="text-3xl font-bold desktop-l:text-left  mobile:text-center text-[#444444] mb-8">Hauptmenü</h2>
+        <div className="w-full flex  bg-[#c22727] animate-fadeInAnimation">
+            <div className="w-[10rem] h-[60%] min-h-[45rem] ml-16 mt-14 shadow-2xl border bg-slate-100 rounded-3xl grid grid-col-1 grid-row-4 place-items-center">
 
-            {/* Menü-Container */}
-            <div className="w-full mt-16 max-w-[50rem] desktop-l:block mobile:grid grid-cols-2 grid-rows-2 gap-x-[2rem] place-content-center place-items-center">
-                {/* Datenbank Menü */}
-                <div
-                    onClick={props.toDatabaseAccess}
-                    className={`relative group desktop-l:min-h-[8rem] mobile:min-h-[10rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#c93636]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
-                        showCards[0] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
-                    }`}
-                >
-                    <h3 className="text-xl font-semibold text-[#333333] duration-300  group-hover:text-white">Datenbankverwaltung</h3>
-                    <p className="text-[#555555] group-hover:text-white duration-300">Verwalten Sie die Datenbankoptionen wie Sichern, Wiederherstellen oder einen neuen Nutzer anlegen.</p>
+
+                <div onClick={props.toContentManagement} className="hover:shadow-xl backdrop-blur-3xl bg-blur hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[80%] h-[7rem] rounded-2xl flex flex-col justify-center items-center">
+                    <ContentManagementIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100"></ContentManagementIcon>
+                    <p className="text-[0.8rem] font-semibold mt-4 text-[#727272] group-hover:text-slate-100">WEBSEITE</p>
                 </div>
 
-                {/* Content Management Menü */}
-                <div
-                    onClick={props.toContentManagement}
-                    className={`relative group desktop-l:min-h-[8rem] mobile:min-h-[10rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#c93636]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
-                        showCards[1] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
-                    }`}
-                >
-                    <h3 className="text-xl font-semibold text-[#333333] duration-300  group-hover:text-white">Content Management</h3>
-                    <p className="text-[#555555] group-hover:text-white duration-300">Verwalten Sie Inhalte und steuern Sie alle Inhalte Ihrer Plattform.</p>
+                <div onClick={props.toDatabaseAccess} className="hover:shadow-xl bg-blur hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[80%] h-[7rem] rounded-2xl flex flex-col justify-center items-center">
+                    <DatabaseIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100"></DatabaseIcon>
+                    <p className="text-[0.8rem] font-semibold mt-4 text-[#727272] group-hover:text-slate-100">DATENBANK</p>
                 </div>
 
-                {/* Einstellungen Menü */}
-                <div
-                    onClick={props.toOptions}
-                    className={`relative group desktop-l:min-h-[8rem] mobile:min-h-[10rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#c93636]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
-                        showCards[2] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
-                    }`}
-                >
-                    <h3 className="text-xl font-semibold text-[#333333] duration-300 group-hover:text-white">Einstellungen</h3>
-                    <p className="text-[#555555] group-hover:text-white duration-300">Passen Sie die allgemeinen Einstellungen der Anwendung an.</p>
+                <div onClick={props.toOptions} className="hover:shadow-xl bg-blur hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[80%] h-[7rem] rounded-2xl flex flex-col justify-center items-center">
+                    <SettingsIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100" ></SettingsIcon>
+                    <p className="text-[0.8rem] font-semibold mt-4 text-[#727272] group-hover:text-slate-100">EINSTELLUNGEN</p>
                 </div>
 
-                {/* Ausloggen Menü */}
-                <div
-                    onClick={props.toLogin}
-                    className={`relative group desktop-l:min-h-[8rem] mobile:min-h-[10rem] hover:cursor-pointer hover:scale-[105%] hover:bg-[#c93636]  bg-white rounded-lg shadow-md p-6 mb-6 w-full opacity-0 transform transition-all duration-500 ${
-                        showCards[3] ? "opacity-100 translate-x-0" : "translate-x-[-100%]"
-                    }`}
-                >
-                    <h3 className="text-xl font-semibold text-[#333333]  duration-300 group-hover:text-white">Ausloggen</h3>
-                    <p className="text-[#555555] group-hover:text-white duration-300">Melden Sie sich von der Anwendung ab.</p>
+                <div onClick={props.toLogin} className="hover:shadow-xl bg-blur hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[80%] h-[7rem] rounded-2xl flex flex-col justify-center items-center">
+                    <LogoutIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100"  ></LogoutIcon>
+                    <p className="text-[0.8rem] font-semibold mt-4 text-[#727272] group-hover:text-slate-100">ABMELDEN</p>
                 </div>
-            </div>
+
             </div>
         </div>
     );

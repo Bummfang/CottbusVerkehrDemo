@@ -9,8 +9,6 @@ import ContentManagement from "../ContentManagement";
 
 
 
-
-
 export default function Home() {
     // pageSelector is a state variable to track which page to render.
     const [pageSelector, setPageSelector] = useState(0);
@@ -30,23 +28,10 @@ export default function Home() {
     const registrationComponent = <Registration backToLogin={() => setPageSelector(0)} />;
     const mainMenu = <MainMenu toContentManagement={() => setPageSelector(5)} toLogin={() => setPageSelector(0)} toDatabaseAccess={() => setPageSelector(2)} toOptions={() => setPageSelector(4)}></MainMenu>
     const settings = <Settings backToMainMenu={() => setPageSelector(3)}></Settings>
-    const contentManagement = <ContentManagement backToMainMenu={()=> setPageSelector(3)}></ContentManagement>
-
-
+    const contentManagement = <ContentManagement backToMainMenu={() => setPageSelector(3)}></ContentManagement>
 
 
     // Script Componens
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -73,7 +58,6 @@ export default function Home() {
 
 
 
-
     // UseEffect for time feature
     useEffect(() => {
         const timer = setInterval(() => {
@@ -86,7 +70,6 @@ export default function Home() {
     }, []);
 
 
-
     // Simulate loading (show the cover for 3 seconds, then slide out)
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -96,9 +79,6 @@ export default function Home() {
         return () => clearTimeout(timer); // Cleanup timeout on component unmount
         // Loading for low latancy computers or bad internet connection
     }, []);
-
-
-
 
 
     // --------------------------------------------------------------------  API REQUESTS
@@ -141,15 +121,11 @@ export default function Home() {
 
 
 
-
-
-
-
     return (
         <div className="w-full h-screen flex flex-col">
             {/* Red Cover with Loading Animation */}
             {loading && (
-                <div className={`absolute w-full h-full bg-red-600 z-50 flex justify-center items-center 
+                <div className={`absolute w-full h-screen bg-[#c22727] z-50 flex justify-center items-center 
                     ${loading ? 'animate-none' : 'animate-slide-out'}`}>
 
                     {/* Loading Spinner */}
@@ -158,38 +134,12 @@ export default function Home() {
             )}
 
             {/* Main Content Section */}
-            <div className={`w-full h-full relative bg-slate-100 ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity fixed top-0 duration-500`}>
-                <div className="w-full bg-slate-100">
-                    <div className="w-full h-[8rem] bg-[#c93636] select-none flex items-center justify-between rounded-b-2xl border-b-2 border-slate-100">
-                        {/* Title */}
-                        <p className="text-white font-bold text-[1.5rem] ml-8">Cottbusverkehr Admin Tool</p>
-                        {/* Logo */}
-                        <img className="h-[8rem] rounded-br-2xl" src="/Graphic/logo.webp" alt="Cottbus Verkehr Logo" />
-                    </div>
-                </div>
-
-
-
-                {/* Render the current page */}
-                <div className="w-full h-full bg-slate-100">
-                    {renderPage()}
-                </div>
-
-            </div>
-
-
-
-
-
-
-
-            {/* Footer Section */}
-            <div className="w-full bg-slate-100 select-none fixed bottom-0">
-                <div className="h-[8rem] bg-[#c93636] mt-auto flex justify-between items-center rounded-t-xl">
+            <div className={`w-full h-screen relative bg-[#c22727] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity fixed top-0 duration-500`}>
+                <div className="h-[8rem] bg-[#c22727] mt-auto flex justify-between items-center rounded-t-xl">
 
                     <div className="flex justify-center items-center pl-5">
                         {/* Status Indicator */}
-                        <div className={`w-4 h-4 rounded-full ml-4 duration-300 ${connection ? "bg-green-400" : "bg-yellow-400"}`}>
+                        <div className={`w-4 h-4 rounded-full duration-300 ${connection ? "bg-green-400" : "bg-yellow-400"}`}>
                             <div className={`rounded-full w-4 h-4 animate-pulse-background duration-300 ${connection ? "bg-green-600" : "bg-yellow-600"}`} />
                         </div>
                         {/* Status Text */}
@@ -199,6 +149,17 @@ export default function Home() {
                         <p className="text-white font-bold text-[1rem] mr-10">{time}</p>
                     </div>
                 </div>
+
+
+
+                {/* ---------------------------------    Render the current page    ------------------------------------ */}
+                <div className="w-full flex justify-center items-center">
+                    {renderPage()}
+                </div>
+
+
+
+
             </div>
         </div>
     );
