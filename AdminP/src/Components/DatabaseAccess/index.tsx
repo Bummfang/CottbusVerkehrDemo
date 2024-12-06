@@ -7,10 +7,10 @@ const DatabaseAccess = (props:{
 
 
     return(
-        <div className=" bg-gray-100 select-none p-8 flex justify-center">
-                <div className="w-[90%] duration-700 bg-white p-6 rounded-lg shadow-lg">
+        <div className=" w-full bg-[#c22727] select-none max-w-[80rem] mt-16 flex justify-center animate-fadeInAnimation text-slate-100">
+                <div className="w-[90%]">
                     {/* Optionen */}
-                    <div className="animate-fadeInAnimation">
+
                         <h2 className="text-xl font-semibold mb-4">Datenbank Optionen</h2>
                         <div className="space-y-4 ">
                             <div>
@@ -45,7 +45,6 @@ const DatabaseAccess = (props:{
                                 <label htmlFor="option3">Datenbank löschen</label>
                             </div>
                         </div>
-                    </div>
 
                     {/* Eingabefelder */}
                     <div className="my-6">
@@ -60,7 +59,7 @@ const DatabaseAccess = (props:{
                                     id="databaseName"
 
                                     placeholder="Fahrplan eingeben"
-                                    className="w-full p-3 border border-gray-300 rounded-md bg-slate-800 text-white"
+                                    className="w-full p-3 border border-gray-300 rounded-md bg-[#c22727] text-white"
                                 />
                             </div>
                             <div>
@@ -72,7 +71,7 @@ const DatabaseAccess = (props:{
                                     id="username"
 
                                     placeholder="Benutzername eingeben"
-                                    className="w-full p-3 border border-gray-300 rounded-md bg-slate-800 text-white" 
+                                    className="w-full p-3 border border-gray-300 rounded-md bg-[#c22727] text-white" 
                                 />
                             </div>
                             <div>
@@ -84,18 +83,18 @@ const DatabaseAccess = (props:{
                                     id="password"
 
                                     placeholder="Passwort eingeben"
-                                    className="w-full p-3 border border-gray-30 rounded-md bg-slate-800 text-white"
+                                    className="w-full p-3 border border-gray-30 rounded-md bg-[#c22727] text-white"
                                 />
                             </div>
                         </div>
                     </div>
                     {/* Buttons */}
-                    <div className="flex justify-between mt-10">
-                    <div  className="bg-[#265d91] group flex justify-between hover:cursor-pointer hover:bg-[#356fa5]  items-center min-w-[10rem] font-semibold text-white px-6 py-2 rounded-md duration-300" onClick={props.backToMainMenu}>
+                    <div className="flex justify-end gap-4 mt-10">
+                    <div  className="group flex justify-between hover:cursor-pointer items-center min-w-[10rem] font-semibold text-white px-6 py-2 rounded-2xl duration-300" onClick={props.backToMainMenu}>
                            <img src="Graphic/arrow.svg" className="w-5 group-hover:-translate-x-3 duration-300" alt="Pfeil Icon für den zurück Knopf" />
                            <p>zurück</p> 
                         </div>
-                        <div className="bg-[#3bbe76] min-w-[10rem] text-center font-semibold text-white px-6 py-2 duration-300 rounded-md hover:bg-[#309c61] ">
+                        <div className="border min-w-[10rem] text-center font-semibold text-white px-6 py-2 duration-300 rounded-2xl hover:bg-slate-100 hover:text-[#c22727] hover:cursor-pointer">
                             Speichern
                         </div>
                     </div>

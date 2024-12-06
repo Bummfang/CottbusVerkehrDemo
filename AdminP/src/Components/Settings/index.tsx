@@ -60,19 +60,19 @@ const Settings = (props: {
 
 
     return (
-        <div className="bg-gray-100 select-none p-8 h-full">
-            <div className="w-full max-w-[600px] mx-auto animate-fadeInAnimation bg-white p-6 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-semibold text-[#333333] mb-8">Einstellungen</h2>
+        <div className="w-full h-full justify-center max-w-[80rem] select-none bg-[#c22727]">
+            <div className="animate-fadeInAnimation p-6">
+                <h2 className="text-2xl font-semibold text-slate-100 mb-8">Einstellungen</h2>
 
 
 
                 {/* Spracheinstellung */}
                 <div className="mb-6">
-                    <label className="block text-lg font-medium text-[#333333] mb-2">Sprache</label>
+                    <label className="block text-lg font-medium text-slate-100 mb-2">Sprache</label>
                     <select
                         value={language}
                         onChange={(e) => setLanguage(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md bg-white"
+                        className="w-full p-3 border border-gray-300 rounded-md bg-[#c22727] text-slate-100 font-semibold"
                     >
                         <option value="de">Deutsch</option>
                         <option value="en">Englisch</option>
@@ -86,10 +86,10 @@ const Settings = (props: {
 
                 {/* Dark Mode */}
                 <div className="mb-6 flex items-center justify-between">
-                    <label className="text-lg font-medium text-[#333333]">Dark Mode</label>
+                    <label className="text-lg font-medium text-slate-100">Dunkler Modus</label>
                     <label
                         htmlFor="darkModeToggle"
-                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${darkMode ? "bg-[#265d91]" : "bg-gray-300"}`}
+                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${darkMode ? "bg-green-500" : "bg-gray-300"}`}
                     >
                         <span
                             className={`w-[20px] h-[20px] bg-white rounded-full shadow-md transform ${darkMode && "translate-x-[140%]"} transition-transform duration-300`}
@@ -114,10 +114,10 @@ const Settings = (props: {
 
                 {/* Benachrichtigungen */}
                 <div className="mb-6 flex items-center justify-between">
-                    <label className="text-lg font-medium text-[#333333]">Benachrichtigungen</label>
+                    <label className="text-lg font-medium text-slate-100">Benachrichtigungen</label>
                     <label
                         htmlFor="notificationsToggle"
-                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${notifications ? "bg-[#265d91]" : "bg-gray-300"}`}
+                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${notifications ? "bg-green-500" : "bg-gray-300"}`}
                     >
                         <span
                             className={`w-[20px] h-[20px] bg-white rounded-full shadow-md transform ${notifications && "translate-x-[140%]"} transition-transform duration-300`}
@@ -141,10 +141,10 @@ const Settings = (props: {
 
                 {/* Automatische Updates */}
                 <div className="mb-6 flex items-center justify-between">
-                    <label className="text-lg font-medium text-[#333333]">Automatische Updates</label>
+                    <label className="text-lg font-medium text-slate-100">Automatische Updates</label>
                     <label
                         htmlFor="autoUpdatesToggle"
-                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${autoUpdates ? "bg-[#265d91]" : "bg-gray-300"}`}
+                        className={`inline-flex items-center cursor-pointer w-[50px] h-[28px] rounded-full transition-all duration-300 ${autoUpdates ? "bg-green-500" : "bg-gray-300"}`}
                     >
                         <span
                             className={`w-[20px] h-[20px] bg-white rounded-full shadow-md transform ${autoUpdates && "translate-x-[140%]"} transition-transform duration-300`}
@@ -169,11 +169,11 @@ const Settings = (props: {
 
                 {/* Zeitzone */}
                 <div className="mb-6">
-                    <label className="block text-lg font-medium text-[#333333] mb-2">Zeitzone</label>
+                    <label className="block text-lg font-medium text-slate-100 mb-2">Zeitzone</label>
                     <select
                         value={timezone}
                         onChange={(e) => setTimezone(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-md bg-white"
+                        className="w-full p-3 border border-gray-300 rounded-md bg-[#c22727] font-semibold text-slate-100"
                     >
                         <option value="Europe/Berlin">Berlin (GMT+1)</option>
                         <option value="Europe/London">London (GMT+0)</option>
@@ -198,13 +198,13 @@ const Settings = (props: {
 
                 {/* Passwort ändern */}
                 <div className="mb-6">
-                    <label className="block text-lg font-medium text-[#333333] mb-2">Neues Passwort</label>
+                    <label className="block text-lg font-medium text-slate-100 mb-2">Neues Passwort</label>
                     <input
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Neues Passwort eingeben"
-                        className="w-full p-3 border border-gray-300 rounded-md text-white bg-slate-800"
+                        className="w-full p-3 border border-gray-300 rounded-md text-white bg-[#c22727]"
                     />
                 </div>
 
@@ -215,13 +215,13 @@ const Settings = (props: {
 
                 {/* Passwort wiederholen */}
                 <div className="mb-6">
-                    <label className="block text-lg font-medium text-[#333333] mb-2">Passwort wiederholen</label>
+                    <label className="block text-lg font-medium text-slate-100 mb-2">Passwort wiederholen</label>
                     <input
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Passwort wiederholen"
-                        className="w-full p-3 border border-gray-300 rounded-md text-white bg-slate-800"
+                        className="w-full p-3 border border-gray-300 rounded-md text-white bg-[#c22727]"
                     />
                     {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
                 </div>
@@ -233,14 +233,14 @@ const Settings = (props: {
 
 
                 {/* Speichern-Button */}
-                <div className="flex justify-between mt-10">
-                    <div className=" bg-[#265d91] group flex justify-between hover:cursor-pointer hover:bg-[#356fa5]  items-center min-w-[10rem] font-semibold text-white px-6 py-2 rounded-md duration-300" onClick={props.backToMainMenu}
+                <div className="flex justify-end gap-4 mt-10">
+                    <div className="group flex justify-between hover:cursor-pointer items-center min-w-[10rem] font-semibold text-white px-6 py-2 rounded-2xl duration-300" onClick={props.backToMainMenu}
                     >
                         <img src="Graphic/arrow.svg" className="w-5 group-hover:-translate-x-3 duration-300" alt="Pfeil Icon für den zurück Knopf" />
                         <p>zurück</p>
                     </div>
                     <div onClick={handleSaveSettings}
-                    className="bg-[#3bbe76] min-w-[10rem] text-center font-semibold text-white px-6 py-2 duration-300 rounded-md hover:bg-[#309c61] ">
+                    className="min-w-[10rem] hover:bg-slate-100 hover:text-[#c22727] border text-center font-semibold text-white px-6 py-2 duration-300 rounded-2xl hover:cursor-pointer">
                         Speichern
                     </div>
                 </div>

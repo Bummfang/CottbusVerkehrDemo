@@ -37,13 +37,15 @@ const Login = (props: {
 
   return (
     <>
-      <div className="w-full h-full flex flex-col select-none items-center mt-[5%] animate-fadeInAnimation">
+      <div className="w-full h-full flex bg-[#c22727] flex-col select-none items-center mt-[5%] animate-fadeInAnimation">
         {/* Outer container for centering the form with animation */}
-        <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-xl duration-300">
-          <h2 className="text-center text-2xl font-bold text-[#c93636] mb-6">Anmeldung</h2>
+        <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl duration-300">
+          <div className="w-full flex justify-center items-center">
+          <img className="h-[7rem]" src="/Graphic/logo.png" alt="" />
+          </div>
           {/* Header section with the title of the form */}
 
-          <form className="space-y-6" onSubmit={handleLogin}>
+          <form className="space-y-6 mt-4" onSubmit={handleLogin}>
             {/* Form container with a 6-unit space between form elements */}
 
             {/* Username input field */}
@@ -88,14 +90,14 @@ const Login = (props: {
             <div className="flex flex-row gab-5 justify-center items-center gap-5">
               {/* Button to navigate to the Registration page */}
               <div onClick={props.toRegistration}
-                className="py-2 mt-10 min-w-[10rem] hover:cursor-pointer flex justify-center item-center duration-200 px-4 bg-[#265d91] text-white font-semibold rounded-md hover:bg-[#356fa5] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
+                className="py-2 mt-10 min-w-[10rem] hover:cursor-pointer flex justify-center item-center duration-200 px-4 border border-[#202020] text-[#c22727] font-semibold rounded-md hover:border-[#c22727] hover:bg-[#c22727] hover:text-slate-100"
               >
                 Registration
               </div>
 
               <button
                 type="submit"
-                className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#3bbe76] text-white font-semibold rounded-md hover:bg-[#309c61] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
+                className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#c22727] text-white font-semibold rounded-md hover:bg-[#309c61] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
               >
                 Anmeldung
               </button>
@@ -105,9 +107,9 @@ const Login = (props: {
         </div >
 
         {/* Informational text below the form */}
-        < p className="mt-10 text-[1.2rem] font-semibold p-1 text-center" >Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p >
-        <p className="mt-2 text-[0.8rem] font-semibold p-1 text-center">Hinweis: Bitte melden Sie sich nur mit entsprechender Berechtigung an. Fehlerhafte Anmeldeversuche werden aus Sicherheitsgründen protokolliert.</p>
-        <div className={`mt-5 border rounded-xl bg-[#353535] text-[0.8rem] font-semibold p-1 text-center text-white px-3 ${backendMessage === "" ? "opacity-0":"opacity-100"}`}>{backendMessage}</div>
+        < p className="mt-10 text-[1.2rem] font-semibold p-1 text-center text-slate-100" >Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p >
+        <p className="mt-2 text-[0.8rem] font-semibold p-1 text-center text-slate-100">Hinweis: Bitte melden Sie sich nur mit entsprechender Berechtigung an. Fehlerhafte Anmeldeversuche werden aus Sicherheitsgründen protokolliert.</p>
+        <div className={`mt-5 border rounded-xl bg-[#e0e0e0]  text-[0.9rem] font-semibold p-1 text-center text-slate-800 px-3 ${backendMessage === "" ? "opacity-0":"opacity-100" }`}>{backendMessage}</div>
       </div >
     </>
   );
