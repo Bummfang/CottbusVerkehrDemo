@@ -90,7 +90,7 @@ const Login = (props: {
             <div className="flex flex-row gab-5 justify-center items-center gap-5">
               {/* Button to navigate to the Registration page */}
               <div onClick={props.toRegistration}
-                className="py-2 mt-10 min-w-[10rem] hover:cursor-pointer flex justify-center item-center duration-200 px-4 border border-[#202020] text-[#c22727] font-semibold rounded-md hover:border-[#c22727] hover:bg-[#c22727] hover:text-slate-100"
+                className="py-2 mt-10 min-w-[10rem] hover:cursor-pointer flex justify-center item-center duration-200 px-4 border border-[#c22727] text-[#c22727] font-semibold rounded-md hover:border-[#c22727] hover:bg-[#c22727] hover:text-slate-100"
               >
                 Registration
               </div>
