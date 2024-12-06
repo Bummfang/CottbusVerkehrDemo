@@ -119,21 +119,6 @@ export default function Home() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return (
         <div className="w-full h-screen flex flex-col">
             {/* Red Cover with Loading Animation */}
@@ -149,7 +134,15 @@ export default function Home() {
             {/* Main Content Section */}
             <div className={`w-full h-full bg-[#c22727] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity top-0 duration-500`}>
                 <div className="h-[8rem] bg-[#c22727] mt-auto flex justify-between items-center rounded-t-xl">
-                    <div></div>
+
+                    <div className={`flex justify-center items-center ml-10 ${pageSelector !== 0 ? "opacity-100":"opacity-0"}`}>
+                        <img className="w-24 h-24 rounded-full border-4" src="Graphic/sandra.webp" alt="" />
+                        <div className="flex flex-col ml-4">
+                            <p className="text-[2rem] font-bold text-slate-100">Sandra Müller</p>
+                            <p className="text-[1rem] font-semibold text-slate-100">Administrator</p>
+                        </div>
+                    </div>
+
                     <div className="flex justify-center items-center mr-4">
                         <div>
                             <p className="text-white font-bold text-[1rem]">{time}</p>
@@ -160,15 +153,10 @@ export default function Home() {
                     </div>
                 </div>
 
-
-
                 {/* ---------------------------------    Render the current page    ------------------------------------ */}
                 <div className="w-full h-full bg-[#c22727] flex justify-center">
                     {renderPage()}
                 </div>
-
-
-
 
             </div>
         </div>
