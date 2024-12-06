@@ -7,7 +7,7 @@ const DatabaseAccess = (props:{
 
 
     return(
-        <div className=" w-full bg-[#c22727] select-none max-w-[80rem] flex justify-center  animate-fadeInAnimation text-slate-100">
+        <div className=" w-full bg-[#c22727] select-none max-w-[80rem] flex justify-center mt-[10rem]  animate-fadeInAnimation text-slate-100">
                 <div className="w-[90%]">
                     {/* Optionen */}
 
