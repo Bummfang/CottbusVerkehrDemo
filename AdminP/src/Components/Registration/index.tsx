@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 
-const Registration = (props: { backToLogin: () => void }) => {
+const Registration = (props: { backToLogin: () => void; }) => {
 
 
   const [username,setUsername] = useState<string>('');
   const [password,setPassword] = useState<string>('');
   const [confirmPasswort,setConfirmPasswort] = useState<string>('');
   const [adminKey,setAdminKey] = useState<string>('');
+  const [registText, setRegistText] = useState<string>('');
 
 
   const handleLogin = async (event: React.FormEvent) => {
@@ -18,15 +19,19 @@ const Registration = (props: { backToLogin: () => void }) => {
         return;
       }
       // console.log(username,password,adminKey);
-      const response = await axios.post("http://localhost:3000/api/register", {
+      await axios.post("http://localhost:3000/api/register", {
         username,
         password,
         adminKey
       });
-      console.log(response.data.message + "!");
+      setRegistText('Registrierung erfolgreich!');
+      const timer = setTimeout(() => {
+        props.backToLogin();
+        return () => clearTimeout(timer);
+      },1000)
     }
-    catch (err) {
-      console.error("Nutzer nicht erkannt !",err);
+    catch {
+      setRegistText('Fehler beim registrieren!')
     }
   };
 
@@ -34,7 +39,7 @@ const Registration = (props: { backToLogin: () => void }) => {
 
     <>
       {/* Main container for centering the form */}
-      <div className="w-full h-full flex select-none flex-col items-center justify-center animate-fadeInAnimation">
+      <div className="w-full h-full flex select-none flex-col items-center mt-10 animate-fadeInAnimation">
 
         {/* Form container with padding, shadow, and maximum width */}
         <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-xl duration-300">
@@ -120,11 +125,8 @@ const Registration = (props: { backToLogin: () => void }) => {
         </div>
 
         {/* Information text */}
-        <p className="mt-[10%] text-[1.2rem] font-semibold">Willkommen! Bitte registrieren Sie sich, um fortzufahren.</p>
-        <p className="mt-2 text-[0.8rem] font-semibold">Hinweis: Die Registrierung ist nur für berechtigte Benutzer möglich. Stellen Sie sicher, dass Ihre E-Mail-Adresse korrekt ist.</p>
+        <div className={`mt-5 border rounded-xl bg-[#353535] text-[0.8rem] font-semibold p-1 text-center text-white px-3 ${registText === "" ? "opacity-0":"opacity-100"}`}>{registText}</div>
       </div>
-
-      <p></p>
     </>
   );
 }

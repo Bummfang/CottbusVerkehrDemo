@@ -5,13 +5,8 @@ require('dotenv').config();
 const bcrypt = require('bcryptjs');  // Importiere bcrypt
 const jwt = require('jsonwebtoken');  // Importiere jsonwebtoken
 
-
 const app = express();
 const port = 3000;
-
-
-
-
 const db = new sqlite3.Database('../db/Database.db', (err) => {
   if (err) {
     console.error('Error while connecting database.', err.message);
@@ -22,15 +17,9 @@ const db = new sqlite3.Database('../db/Database.db', (err) => {
 });
 
 
-
-
-
-
 // Middleware
 app.use(cors());
 app.use(express.json());
-
-
 
 
 app.get('/api/connection', (req, res) => {
@@ -38,7 +27,6 @@ app.get('/api/connection', (req, res) => {
     connection: 'OK'
   });
 });
-
 
 
 app.post('/api/login', async (req, res) => {
@@ -73,7 +61,6 @@ app.post('/api/login', async (req, res) => {
 });
 
 
-
 app.post('/api/register', async (req, res) => {
   try {
     const { username, password, adminKey } = req.body;
@@ -84,9 +71,15 @@ app.post('/api/register', async (req, res) => {
 
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    console.log(`Username: ${username}, Hashed Password: ${hashedPassword}`);
-
+    const existUser = `SELECT EXISTS (SELECT 1 FROM employee WHERE username = ?)`;
     const sql = `INSERT INTO employee (name, password, admin_key) VALUES (?, ?, ?)`;
+
+    db.get(existUser, [username], async(row) => {
+      if(row.userExist){
+        return res.status(409).json({message:"Benutzername bereits vergeben!"})
+      }
+    });
+
     db.run(sql, [username, hashedPassword, adminKey], function (err) {
       if (err) {
         return res.status(500).json({ error: 'Fehler beim Registrierungsprozess: ' + err.message });
@@ -98,6 +91,7 @@ app.post('/api/register', async (req, res) => {
     res.status(500).json({ message: "error while hashing password" });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server läuft auf http://localhost:${port}`);

@@ -28,8 +28,7 @@ const Login = (props: {
     return () => clearTimeout(timer);
     }
     catch (err) {
-      console.error("Nutzer nicht erkannt !",err);
-      setBackendMessage("Nutzer nicht erkannt !");
+      setBackendMessage("Nutzer nicht gefunden!");
     }
   };
 
