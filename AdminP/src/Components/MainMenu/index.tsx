@@ -14,18 +14,18 @@ const MainMenu = (props: {
 
 
     return (
-        <div className="w-full flex justify-center  bg-[#c22727] animate-fadeInAnimation">
-            <div className="w-[80%] border flex rounded-3xl bg-slate-100">
+        <div className="w-full flex justify-center mb-[30%] bg-[#c22727] animate-fadeInAnimation">
+            <div className="w-[80%] border flex rounded-3xl bg-slate-100 shadow-xl">
                 {/**                                ! */}
                 <div className="flex flex-col justify-around w-full h-full p-4">
                     {/* Titelbereich */}
-                    <h1 className="text-lg font-bold text-[#c22727]">Verkehrsinformationen</h1>
+                    <h1 className="text-lg font-bold text-[#6b6b6b]">Verkehrsinformationen</h1>
 
                     {/* Verkehrsstörungen, Abfahrtszeiten und Karte */}
                     <div className="flex justify-between mt-4">
                         {/* Verkehrsstörungen */}
                         <div className="flex-1 p-3 bg-white rounded-lg shadow-sm">
-                            <h2 className="text-sm font-semibold text-[#c22727]">Aktuelle Verkehrsstörungen</h2>
+                            <h2 className="text-sm font-bold text-[#b32323]">Aktuelle Verkehrsstörungen</h2>
                             <ul className="mt-3 space-y-1">
                                 <li className="p-2 border rounded-lg bg-[#ffe4e4]">
                                     <p className="font-bold text-sm">⚠️ Linie 1 - Verzögerung</p>
@@ -44,7 +44,7 @@ const MainMenu = (props: {
 
                         {/* Live-Abfahrten */}
                         <div className="flex-1 ml-3 p-3 bg-white rounded-lg shadow-sm">
-                            <h2 className="text-sm font-semibold text-[#c22727]">Live-Abfahrten</h2>
+                            <h2 className="text-sm font-bold text-[#313131]">Live-Abfahrten</h2>
                             <ul className="mt-3 space-y-1">
                                 <li className="flex justify-between border-b pb-1">
                                     <span className="text-sm">Tram 1 Richtung Hauptbahnhof</span>
@@ -64,7 +64,7 @@ const MainMenu = (props: {
 
                     {/* Karte */}
                     <div className="mt-4 p-3 bg-white rounded-lg shadow-sm">
-                        <h2 className="text-sm font-semibold text-[#c22727]">Karte</h2>
+                        <h2 className="text-sm font-bold text-[#2e2e2e]">Karte</h2>
                         <div className="mt-3">
                             <iframe
                                 className="w-full h-64 rounded-lg"
@@ -78,7 +78,7 @@ const MainMenu = (props: {
 
 
             {/**Navigation Bar */}
-            <div className="h-[15%] w-[50%] ml-16 mt-14 shadow-lg fixed bottom-0 mb-10 duration-300 border bg-slate-100 rounded-3xl flex justify-around items-center">
+            <div className="h-[10.5rem] w-[42rem] ml-16 mt-14 shadow-lg fixed bottom-0 mb-10 duration-300 border bg-slate-100 rounded-3xl flex justify-around items-center">
 
 
                 <div onClick={props.toContentManagement} className="hover:shadow-md hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[8rem] h-[8rem] rounded-2xl flex flex-col justify-center items-center">

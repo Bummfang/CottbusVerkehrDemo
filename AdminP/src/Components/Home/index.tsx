@@ -138,7 +138,7 @@ export default function Home() {
         <div className="w-full h-screen flex flex-col">
             {/* Red Cover with Loading Animation */}
             {loading && (
-                <div className={`absolute w-full h-screen bg-[#c22727] z-50 flex justify-center items-center 
+                <div className={`absolute w-full h-full bg-[#c22727] z-50 flex justify-center items-center 
                     ${loading ? 'animate-none' : 'animate-slide-out'}`}>
 
                     {/* Loading Spinner */}
@@ -147,7 +147,7 @@ export default function Home() {
             )}
 
             {/* Main Content Section */}
-            <div className={`w-full h-screen relative bg-[#c22727] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity fixed top-0 duration-500`}>
+            <div className={`w-full h-full bg-[#c22727] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity top-0 duration-500`}>
                 <div className="h-[8rem] bg-[#c22727] mt-auto flex justify-between items-center rounded-t-xl">
 
                     <div className="flex flex-col justify-center items-center ml-10 pl-5">
@@ -161,7 +161,7 @@ export default function Home() {
 
 
                 {/* ---------------------------------    Render the current page    ------------------------------------ */}
-                <div className="w-full flex justify-center items-center">
+                <div className="w-full h-full bg-[#c22727] flex justify-center items-center">
                     {renderPage()}
                 </div>
 
