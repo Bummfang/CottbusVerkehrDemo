@@ -132,7 +132,7 @@ export default function Home() {
             )}
 
             {/* Main Content Section */}
-            <div className={`w-full h-full bg-[#c22727] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity top-0 duration-500`}>
+            <div className={`w-full h-full select-none bg-[#c22727] ${loading ? 'opacity-0' : 'opacity-100'} transition-opacity top-0 duration-500`}>
                 <div className="h-[8rem] bg-[#c22727] mt-auto flex justify-between items-center rounded-t-xl">
 
                     <div className={`flex justify-center items-center ml-10 ${pageSelector !== 0 ? "opacity-100":"opacity-0"}`}>
