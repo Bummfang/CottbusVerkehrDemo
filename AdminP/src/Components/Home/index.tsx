@@ -8,6 +8,7 @@ import axios from 'axios';
 import ContentManagement from "../ContentManagement";
 import ConnectionIcon from "../Svg/connection";
 import NoConnectionIcon from "../Svg/noconnection";
+import FahrplanView from "../FahrplanView";
 
 
 
@@ -30,7 +31,8 @@ export default function Home() {
     const registrationComponent = <Registration backToLogin={() => setPageSelector(0)} />;
     const mainMenu = <MainMenu toContentManagement={() => setPageSelector(5)} toLogin={() => setPageSelector(0)} toDatabaseAccess={() => setPageSelector(2)} toOptions={() => setPageSelector(4)}></MainMenu>
     const settings = <Settings backToMainMenu={() => setPageSelector(3)}></Settings>
-    const contentManagement = <ContentManagement backToMainMenu={() => setPageSelector(3)}></ContentManagement>
+    const contentManagement = <ContentManagement toFahrplanView={() => setPageSelector(6)} backToMainMenu={() => setPageSelector(3)}></ContentManagement>
+    const fahrplanView = <FahrplanView backToContentManagement={() => setPageSelector(5)} />
 
 
     // Script Componens
@@ -53,6 +55,8 @@ export default function Home() {
                 return settings;
             case 5:
                 return contentManagement;
+            case 6:
+                return fahrplanView;
             default: // Default case, render Login
                 return loginComponent;
         }
