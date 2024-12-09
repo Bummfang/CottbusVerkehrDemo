@@ -27,7 +27,7 @@ const Login = (props: {
     }, 1000); 
     return () => clearTimeout(timer);
     }
-    catch (err) {
+    catch {
       setBackendMessage("Nutzer nicht gefunden!");
     }
   };

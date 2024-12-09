@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const ContentManagement = (props:{
     backToMainMenu:() => void;
+    toFahrplanView: () => void;
 }) => {
     // Zustand, um zu verfolgen, wann jede Karte sichtbar wird
     const [showCards, setShowCards] = useState([false, false, false, false, false]);
@@ -29,7 +30,11 @@ const ContentManagement = (props:{
             {/* Grid-Container */}
             <div className="grid grid-cols-2 gap-8 max-w-[800px]">
                 {/* Fahrplanübersicht */}
-                <div className={`group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] rounded-lg shadow-md hover:shadow-2xl hover:bg-slate-100 p-6 opacity-0 transform transition-all duration-500 ${showCards[0] ? "opacity-100 translate-y-0" : "translate-y-[-50px]"}`}>
+                <div className={`group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] rounded-lg shadow-md hover:shadow-2xl hover:bg-slate-100 p-6 opacity-0 transform transition-all duration-500 ${showCards[0] ? "opacity-100 translate-y-0" : "translate-y-[-50px]"}`}
+                onClick={() => {
+                    props.toFahrplanView();
+                }}
+                >
                     <h3 className="text-xl font-bold group-hover:text-[#202020]">
                         Fahrplanübersicht
                     </h3>
