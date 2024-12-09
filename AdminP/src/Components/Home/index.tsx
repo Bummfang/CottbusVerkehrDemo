@@ -9,6 +9,7 @@ import ContentManagement from "../ContentManagement";
 import ConnectionIcon from "../Svg/connection";
 import NoConnectionIcon from "../Svg/noconnection";
 import FahrplanView from "../FahrplanView";
+import DragDrop from "../DragDrop";
 
 
 
@@ -31,8 +32,9 @@ export default function Home() {
     const registrationComponent = <Registration backToLogin={() => setPageSelector(0)} />;
     const mainMenu = <MainMenu toContentManagement={() => setPageSelector(5)} toLogin={() => setPageSelector(0)} toDatabaseAccess={() => setPageSelector(2)} toOptions={() => setPageSelector(4)}></MainMenu>
     const settings = <Settings backToMainMenu={() => setPageSelector(3)}></Settings>
-    const contentManagement = <ContentManagement toFahrplanView={() => setPageSelector(6)} backToMainMenu={() => setPageSelector(3)}></ContentManagement>
+    const contentManagement = <ContentManagement toDragDrop={() => setPageSelector(7)} toFahrplanView={() => setPageSelector(6)} backToMainMenu={() => setPageSelector(3)}></ContentManagement>
     const fahrplanView = <FahrplanView backToContentManagement={() => setPageSelector(5)} />
+    const dragDrop = <DragDrop backToContentManagement={() => setPageSelector(3)}></DragDrop>
 
 
     // Script Componens
@@ -57,6 +59,8 @@ export default function Home() {
                 return contentManagement;
             case 6:
                 return fahrplanView;
+            case 7:
+                return dragDrop;
             default: // Default case, render Login
                 return loginComponent;
         }
