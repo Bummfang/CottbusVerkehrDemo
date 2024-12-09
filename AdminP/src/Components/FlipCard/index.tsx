@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const FlipCard = () => {
+
   const [flipped, setFlipped] = useState<boolean>(false);
 
   /* Fahrplan - Nodes */
@@ -23,15 +24,18 @@ const FlipCard = () => {
   return (
     <div className="flex flex-col">
       <div className={`card w-[25rem] h-[30rem] ${flipped ? "flipped" : ""}`}>
+        {/* Card Front */}
         <div className="card__content w-[25rem] border border-[#909090] h-[30rem] rounded-md relative p-20 transition-transform duration-1000 text-white">
           <div className="card__front absolute top-0 bottom-0 right-0 left-0 p-8 bg-white text-[#151515]  rounded-md flex flex-col">
             <div className="h-[20rem] flex flex-col">
+
               <img
                 src="/Graphic/logo.webp"
                 alt="Cottbus Verkehr Logo"
                 className=""
               />
 
+              {/* Text - Block */}
               <span className="font-bold text-[1.6rem] mt-[2rem]  ">
                 Linie 16 hat eine neue Haltestelle!
               </span>
@@ -40,6 +44,8 @@ const FlipCard = () => {
                 Haltestelle Sachsendorfer Haupt...
               </p>
             </div>
+
+            {/* Button on Front */}
             <div
               onClick={() => {
                 setFlipped(!flipped);
@@ -49,9 +55,14 @@ const FlipCard = () => {
               Fahrplan
             </div>
           </div>
+
+          {/* Card Back */}
           <div className="card__back absolute top-0 bottom-0 right-0 left-0 p-8 bg-[#c93636] rounded-md flex-col flex">
             <div className="h-[20rem] flex flex-col">
+
+              {/* Route Container */}
               <svg className="w-full h-full bg-white rounded-md">
+
                 {/* Function for drawing edges */}
                 {edges.map((edge, index) => {
                   const fromNode = nodes.find((node) => node.id === edge.from);
@@ -93,6 +104,8 @@ const FlipCard = () => {
                 ))}
               </svg>
             </div>
+
+            {/* Backside Button */}
             <div
               onClick={() => {
                 setFlipped(!flipped);
