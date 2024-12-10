@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const ContentManagement = (props:{
     backToMainMenu:() => void;
     toFahrplanView: () => void;
+    toDragDrop: () => void;
 }) => {
     // Zustand, um zu verfolgen, wann jede Karte sichtbar wird
     const [showCards, setShowCards] = useState([false, false, false, false, false]);
@@ -44,7 +45,9 @@ const ContentManagement = (props:{
                 </div>
 
                 {/* Fahrplanänderung */}
-                <div className={`group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] rounded-lg shadow-md hover:shadow-2xl hover:bg-slate-100 p-6 opacity-0 transform transition-all duration-500 ${showCards[1] ? "opacity-100 translate-y-0" : "translate-y-[-50px]"}`}>
+                <div className={`group min-h-[8rem] hover:cursor-pointer hover:scale-[105%] rounded-lg shadow-md hover:shadow-2xl hover:bg-slate-100 p-6 opacity-0 transform transition-all duration-500 ${showCards[1] ? "opacity-100 translate-y-0" : "translate-y-[-50px]"}`}
+                    onClick={() => props.toDragDrop()}
+                >
                     <h3 className="text-xl font-bold group-hover:text-[#202020]">
                         Fahrplanänderung
                     </h3>
