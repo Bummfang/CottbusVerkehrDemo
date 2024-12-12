@@ -9,6 +9,8 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dragCounter = useRef<number>(0);
 
+
+
   const handleDragIn = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     dragCounter.current += 1;
@@ -17,6 +19,10 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
     }
   };
 
+
+
+
+
   const handleDragOut = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     dragCounter.current -= 1;
@@ -24,6 +30,11 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
       setDragging(false);
     }
   };
+
+
+
+
+
 
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -34,12 +45,20 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
     }
   };
 
+
+
+
+
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files && files.length > 0) {
       handleFileUpload(files[0]);
     }
   };
+
+
+
+
 
   const handleFileUpload = (file: File) => {
     setUploadProgress(0);
@@ -53,21 +72,33 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
       });
     }, 100);
 
-    // Simulate file upload process
     setTimeout(() => {
       const uploadTime = new Date().toLocaleTimeString();
       setRecentUploads((prev) => [
-        { fileName: file.name, line: selectedLine, time: uploadTime },
-        ...prev.slice(0, 4), // Limit to the last 5 uploads
+        { 
+          fileName: file.name, 
+          line: selectedLine, 
+          time: uploadTime 
+        },
+        ...prev.slice(0, 4), // Limit to 5 uploads
       ]);
       alert(`Der Fahrplan für Linie ${selectedLine} wurde erfolgreich aktualisiert!`);
       setUploadProgress(null);
     }, 3000);
   };
 
+
+
+
+
+
   const triggerFileInput = () => {
     fileInputRef.current!.click();
   };
+
+
+
+
 
   return (
     <motion.div
@@ -138,12 +169,12 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
         {uploadProgress !== null && (
           <div className="w-[25rem] mt-4">
             <motion.div
-              className="w-full bg-white border-4 border-[#c22727] rounded-full h-8 p-[2px]"
+              className="w-full bg-white border-4 border-[#c22727] rounded-3xl h-8 p-[2px]"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
             >
               <div
-                className="bg-[#c22727] h-full rounded-full text-center text-white font-bold"
+                className="bg-[#c22727] h-full rounded-3xl text-center text-white font-bold"
                 style={{ width: `${uploadProgress}%` }}
               >
                 {uploadProgress}%
@@ -177,12 +208,10 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <button
-            onClick={props.backToContentManagement}
-            className="py-2 px-6 bg-white text-[#c22727] font-semibold rounded-lg hover:bg-[#c22727] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#c22727]"
-          >
-            Zurück
-          </button>
+          <div className="group flex justify-between hover:cursor-pointer items-center min-w-[10rem] font-semibold text-white px-6 py-2 rounded-2xl duration-300" onClick={props.backToContentManagement}>
+            <img src="Graphic/arrow.svg" className="w-5 group-hover:-translate-x-3 duration-300" alt="Pfeil Icon für den zurück Knopf" />
+            <p>zurück</p>
+          </div>
         </motion.div>
       </div>
     </motion.div>
