@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import ContentManagementIcon from "../Svg/contentmanagement";
 import DatabaseIcon from "../Svg/database";
 import LogoutIcon from "../Svg/logout";
@@ -11,12 +12,18 @@ const MainMenu = (props: {
     toLogin: () => void;
 }) => {
 
-
-
     return (
-        <div className="w-full flex h-[40rem] justify-center mb-[20%] bg-[#c22727] animate-fadeInAnimation">
-            <div className="w-[80%] border flex rounded-3xl bg-slate-100 shadow-xl">
-                {/**                                ! */}
+        <motion.div
+            className="w-full flex h-[40rem] justify-center mb-[20%] bg-[#c22727] animate-fadeInAnimation"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+        >
+            <motion.div
+                className="w-[80%] border flex rounded-3xl bg-slate-100 shadow-xl"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+            >
                 <div className="flex flex-col justify-around w-full h-full p-4">
                     {/* Titelbereich */}
                     <h1 className="text-lg font-bold text-[#6b6b6b]">Verkehrsinformationen</h1>
@@ -24,7 +31,11 @@ const MainMenu = (props: {
                     {/* Verkehrsstörungen, Abfahrtszeiten und Karte */}
                     <div className="flex justify-between mt-4">
                         {/* Verkehrsstörungen */}
-                        <div className="flex-1 p-3 bg-white rounded-lg shadow-sm">
+                        <motion.div
+                            className="flex-1 p-3 bg-white rounded-lg shadow-sm"
+                            whileHover={{ scale: 1.02 }}
+                            transition={{ duration: 0.3 }}
+                        >
                             <h2 className="text-sm font-bold text-[#b32323]">Aktuelle Verkehrsstörungen</h2>
                             <ul className="mt-3 space-y-1">
                                 <li className="p-2 border rounded-lg bg-[#ffe4e4]">
@@ -40,10 +51,14 @@ const MainMenu = (props: {
                                     </p>
                                 </li>
                             </ul>
-                        </div>
+                        </motion.div>
 
                         {/* Live-Abfahrten */}
-                        <div className="flex-1 ml-3 p-3 bg-white rounded-lg shadow-sm">
+                        <motion.div
+                            className="flex-1 ml-3 p-3 bg-white rounded-lg shadow-sm"
+                            whileHover={{ scale: 1.02 }}
+                            transition={{ duration: 0.3 }}
+                        >
                             <h2 className="text-sm font-bold text-[#313131]">Live-Abfahrten</h2>
                             <ul className="mt-3 space-y-1">
                                 <li className="flex justify-between border-b pb-1">
@@ -59,11 +74,15 @@ const MainMenu = (props: {
                                     <span className="font-semibold text-sm">12 Min</span>
                                 </li>
                             </ul>
-                        </div>
+                        </motion.div>
                     </div>
 
                     {/* Karte */}
-                    <div className="mt-4 p-3 bg-white rounded-lg shadow-sm">
+                    <motion.div
+                        className="mt-4 p-3 bg-white rounded-lg shadow-sm"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                    >
                         <h2 className="text-sm font-bold text-[#2e2e2e]">Karte</h2>
                         <div className="mt-3">
                             <iframe
@@ -72,36 +91,59 @@ const MainMenu = (props: {
                                 loading="lazy"
                             ></iframe>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
 
-
-            {/**Navigation Bar */}
-            <div className="h-[10.5rem] w-[42rem] ml-16 mt-14 shadow-lg fixed bottom-0 mb-10 duration-300 border bg-slate-100 rounded-3xl flex justify-around items-center">
-
-
-                <div onClick={props.toContentManagement} className="hover:shadow-md hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[8rem] h-[8rem] rounded-2xl flex flex-col justify-center items-center">
-                    <ContentManagementIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100"></ContentManagementIcon>
+            {/* Navigation Bar */}
+            <motion.div
+                className="h-[10.5rem] w-[42rem] ml-16 mt-14 shadow-lg fixed bottom-0 mb-10 duration-300 border bg-slate-100 rounded-3xl flex justify-around items-center"
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                <motion.div
+                    onClick={props.toContentManagement}
+                    className="hover:shadow-md hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[8rem] h-[8rem] rounded-2xl flex flex-col justify-center items-center"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <ContentManagementIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100" />
                     <p className="text-[0.8rem] font-semibold mt-4 text-[#727272] group-hover:text-slate-100">WEBSEITE</p>
-                </div>
+                </motion.div>
 
-                <div onClick={props.toDatabaseAccess} className="hover:shadow-md hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[8rem] h-[8rem] rounded-2xl flex flex-col justify-center items-center">
-                    <DatabaseIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100"></DatabaseIcon>
+                <motion.div
+                    onClick={props.toDatabaseAccess}
+                    className="hover:shadow-md hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[8rem] h-[8rem] rounded-2xl flex flex-col justify-center items-center"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <DatabaseIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100" />
                     <p className="text-[0.8rem] font-semibold mt-4 text-[#727272] group-hover:text-slate-100">DATENBANK</p>
-                </div>
+                </motion.div>
 
-                <div onClick={props.toOptions} className="hover:shadow-md hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[8rem] h-[8rem] rounded-2xl flex flex-col justify-center items-center">
-                    <SettingsIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100" ></SettingsIcon>
+                <motion.div
+                    onClick={props.toOptions}
+                    className="hover:shadow-md hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[8rem] h-[8rem] rounded-2xl flex flex-col justify-center items-center"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <SettingsIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100" />
                     <p className="text-[0.8rem] font-semibold mt-4 text-[#727272] group-hover:text-slate-100">EINSTELLUNG</p>
-                </div>
+                </motion.div>
 
-                <div onClick={props.toLogin} className="hover:shadow-md  hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[8rem] h-[8rem] rounded-2xl flex flex-col justify-center items-center">
-                    <LogoutIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100"  ></LogoutIcon>
+                <motion.div
+                    onClick={props.toLogin}
+                    className="hover:shadow-md hover:scale-[115%] group hover:cursor-pointer duration-500 hover:bg-[#c22727] w-[8rem] h-[8rem] rounded-2xl flex flex-col justify-center items-center"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <LogoutIcon className="w-[1.5rem] fill-[#757575] group-hover:fill-slate-100" />
                     <p className="text-[0.8rem] font-semibold mt-4 text-[#727272] group-hover:text-slate-100">ABMELDEN</p>
-                </div>
-            </div>
-        </div>
+                </motion.div>
+            </motion.div>
+        </motion.div>
     );
 };
+
 export default MainMenu;

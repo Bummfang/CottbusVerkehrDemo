@@ -1,18 +1,13 @@
 import axios from "axios";
 import {useState } from "react";
-
 const Login = (props: {
   login: () => void;
   toRegistration: () => void;
 }) => {
-
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [adminkey, setAdminKey] = useState<string>('');
   const [backendMessage, setBackendMessage] = useState<string>('');
-
-
-
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
@@ -31,10 +26,6 @@ const Login = (props: {
       setBackendMessage("Nutzer nicht gefunden!");
     }
   };
-
-
-
-
   return (
     <>
       <div className="w-full h-full flex bg-[#c22727] flex-col select-none items-center mt-28 animate-fadeInAnimation">
@@ -97,15 +88,13 @@ const Login = (props: {
 
               <button
                 type="submit"
-                className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#c22727] text-white font-semibold rounded-md hover:bg-[#309c61] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
+                className="py-2 mt-10 min-w-[10rem] duration-200 px-4 bg-[#c22727] text-white border font-semibold rounded-md hover:bg-[#309c61] focus:outline-none focus:ring-2 focus:ring-[#c93636] focus:ring-opacity-50"
               >
                 Anmeldung
               </button>
             </div>
-
           </form>
         </div >
-
         {/* Informational text below the form */}
         < p className="mt-10 text-[1.2rem] font-semibold p-1 text-center text-slate-100" >Sie sind aktuell nicht mit dem Backend Service verbunden. Bitte melden Sie sich an!</p >
         <p className="mt-2 text-[0.8rem] font-semibold p-1 text-center text-slate-100">Hinweis: Bitte melden Sie sich nur mit entsprechender Berechtigung an. Fehlerhafte Anmeldeversuche werden aus Sicherheitsgründen protokolliert.</p>

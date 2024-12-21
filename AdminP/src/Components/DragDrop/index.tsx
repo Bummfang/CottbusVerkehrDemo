@@ -8,9 +8,6 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
   const [recentUploads, setRecentUploads] = useState<{ fileName: string; line: string; time: string }[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dragCounter = useRef<number>(0);
-
-
-
   const handleDragIn = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     dragCounter.current += 1;
@@ -19,10 +16,6 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
     }
   };
 
-
-
-
-
   const handleDragOut = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     dragCounter.current -= 1;
@@ -30,11 +23,6 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
       setDragging(false);
     }
   };
-
-
-
-
-
 
   const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -45,20 +33,12 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
     }
   };
 
-
-
-
-
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files && files.length > 0) {
       handleFileUpload(files[0]);
     }
   };
-
-
-
-
 
   const handleFileUpload = (file: File) => {
     setUploadProgress(0);
@@ -87,18 +67,9 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
     }, 3000);
   };
 
-
-
-
-
-
   const triggerFileInput = () => {
     fileInputRef.current!.click();
   };
-
-
-
-
 
   return (
     <motion.div
@@ -218,5 +189,4 @@ const DragDrop = (props: { backToContentManagement: () => void }) => {
 
   );
 };
-
 export default DragDrop;
