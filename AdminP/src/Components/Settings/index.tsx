@@ -60,7 +60,7 @@ const Settings = (props: {
 
 
     return (
-        <div className="w-full h-full justify-center max-w-[80rem] select-none bg-[#c22727]">
+        <div className="w-full h-full justify-center max-w-[80rem] select-none mt-[10rem] bg-[#c22727]">
             <div className="animate-fadeInAnimation p-6">
                 <h2 className="text-2xl font-semibold text-slate-100 mb-8">Einstellungen</h2>
 

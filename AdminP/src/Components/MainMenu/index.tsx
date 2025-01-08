@@ -18,7 +18,7 @@ const MainMenu = (props: {
                 {/**                                ! */}
                 <div className="flex flex-col justify-around w-full h-full p-4">
                     {/* Titelbereich */}
-                    <h1 className="text-lg font-bold text-[#6b6b6b]">Verkehrsinformationen</h1>
+                    <h1 className="text-lg font-bold text-[#6b6b6b]">Dashboard</h1>
 
                     {/* 4er Grid */}
                     <div className="grid grid-cols-2 gap-3 mt-4">
